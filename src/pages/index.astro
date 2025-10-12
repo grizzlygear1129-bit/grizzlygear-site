@@ -49,10 +49,13 @@ import news from '../data/news.json';
         <Card
           key={product.id}
           name={product.name}
-          description={product.description}
+          shortDescription={product.shortDescription}
+          longDescription={product.longDescription}
           mainImage={product.mainImage}
           colors={product.colors}
           slides={product.slides}
+          capacity={product.capacity}
+          dimensions={product.dimensions}
         />
       ))}
     </div>

@@ -1,8 +1,19 @@
 [
   {
     "id": 1,
-    "name": "長財布",
-    "description": "上質な革で仕立てた、使い込むほどに味わい深くなる長財布",
+    "name": "Type SCW",
+    "shortDescription": "コード留めを採用した長財布です",
+    "longDescription": "コード留めを採用した、収納力とデザイン性を両立した長財布です。留め具には、GRIZZLY GEARの象徴である「GEAR（歯車）」を使用しています。\n外側には経年変化を楽しめるヌメ革を使用しており、使い込むほどに味わい深い表情が増していきます。\nコード留めは、ちょっと慣れればとても楽に使えます。",
+    "capacity": {
+      "bills": "10枚",
+      "coins": "20枚",
+      "cards": "12枚（6ポケット各2枚）"
+    },
+    "dimensions": {
+      "height": "約9.5cm",
+      "width": "約17.5cm",
+      "depth": "約2.5cm"
+    },
     "mainImage": "/images/wallet/main-nagasaifu.jpg",
     "slides": [
       "/images/wallet/slide1.jpg",
@@ -10,12 +21,6 @@
       "/images/wallet/slide3.jpg"
     ],
     "colors": [
-      {
-        "name": "ブラウン",
-        "image": "/images/wallet/brown-nagasaifu.jpg",
-        "description": "経年変化が最も楽しめる王道カラー",
-        "link": "https://mercari-link/wallet-brown"
-      },
       {
         "name": "ブルー",
         "image": "/images/wallet/blue-nagasaifu.jpg",
@@ -38,8 +43,17 @@
   },
   {
     "id": 2,
-    "name": "スクエアケース",
-    "description": "コンパクトで機能的なスクエア型のカードケース",
+    "name": "Type S",
+    "shortDescription": "トグルボタンが特徴のコンパクトなコインケースです",
+    "longDescription": "トグルボタンで開閉しやすく、持ち運びに便利なコインケースです。\n留め具には、GRIZZLY GEARの象徴である「GRIZZLY（熊）」の爪を想起させるボタンを使用しています。\nコンパクトながら、十分な収納力を備えています。",
+    "capacity": {
+      "coins": "20枚"
+    },
+    "dimensions": {
+      "height": "約7.0cm",
+      "width": "約7.0cm",
+      "depth": "約2.0cm"
+    },
     "mainImage": "/images/square/main-square.jpg",
     "slides": [
       "/images/square/slide1.jpg",
@@ -75,8 +89,17 @@
   },
   {
     "id": 3,
-    "name": "デルタケース",
-    "description": "三角形のユニークなデザインのカードケース",
+    "name": "Type D",
+    "shortDescription": "使いが手のいい、コンパクトな三角形のコインケースです",
+    "longDescription": "三角形のフォルムで、使いやすさとデザイン性を両立したコインケースです。\n蓋を開くと、ギボシ金具と歯車の装飾が現れ、しっかりとしたホールド感を生み出します。ポケットにも収まりやすいコンパクトサイズで、普段使いに最適。\n開口部が大きく、小銭の出し入れもスムーズに行えます。",
+    "capacity": {
+      "coins": "25枚"
+    },
+    "dimensions": {
+      "height": "約9.0cm",
+      "width": "約9.0cm",
+      "depth": "約2.0cm"
+    },
     "mainImage": "/images/delta/main-delta.jpg",
     "slides": [
       "/images/delta/slide1.jpg",
@@ -113,8 +136,17 @@
   },
   {
     "id": 4,
-    "name": "キーケース",
-    "description": "スマートに鍵を収納できる機能的なキーケース",
+    "name": "Type K",
+    "shortDescription": "スマートに鍵を収納できる機能的なキーケースです",
+    "longDescription": "複数の鍵をスマートに収納できるキーケースです。\n機能性とデザイン性を兼ね備えた設計で、日常使いに最適です。\nギボシの位置を変えることで、収納する鍵の本数を調整できます。",
+    "capacity": {
+      "keys": "3~5本"
+    },
+    "dimensions": {
+      "height": "約4.0cm",
+      "width": "約8.0cm",
+      "depth": "約2.0cm"
+    },
     "mainImage": "/images/key/main-key.jpg",
     "slides": [
       "/images/key/slide1.jpg",
