@@ -60,5 +60,73 @@ import news from '../data/news.json';
       ))}
     </div>
   </div>
+
+  <!-- 注意事項 -->
+  <div class="max-w-4xl mx-auto px-6 my-12">
+    <div class="bg-base-200 rounded-lg">
+      <button 
+        id="toggleNotice" 
+        class="w-full px-4 py-3 flex justify-between items-center border-b border-base-300"
+      >
+        <div>
+          <h2 class="text-2xl font-bold">商品に関する注意事項</h2>
+        </div>
+        <svg 
+          id="toggleIcon"
+          class="w-6 h-6 transition-transform duration-200" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+      <div id="noticeContent" class="hidden px-4 py-4">
+        <div class="pt-2">
+          <ul class="space-y-3 text-gray-600 text-sm leading-relaxed">
+            <li class="flex items-start">
+              <span class="text-warning mr-2 text-base">※</span>
+              <span>すべての商品がハンドメイドで、一つ一つ丁寧に手縫いで製作しています。そのため、製作には時間がかかることがございます。</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-warning mr-2 text-base">※</span>
+              <span>写真の色味は実物と異なって見える場合がございます。モニターの設定や環境により、実際の商品の色とは異なる場合がございますので、予めご了承ください。</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-warning mr-2 text-base">※</span>
+              <span>天然の革を使用しているため、革本来の傷や血筋などが見られる場合がございます。これらは革の持つ自然な表情としてご理解ください。</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-warning mr-2 text-base">※</span>
+              <span>革製品は使用していく過程で色が濃くなったり、艶が出てきたりと経年変化していきます。これは革本来の特性であり、使い込むほどに味わい深い表情へと変化していきます。</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-warning mr-2 text-base">※</span>
+              <span>革製品は水に弱い特性があります。水濡れにはご注意ください。万が一濡れた場合は、乾いた布で水分を拭き取り、陰干しで自然乾燥させてください。</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-warning mr-2 text-base">※</span>
+              <span>ハンドメイド製品のため、商品ごとに若干のサイズの違いや、装飾に使用するパーツ（歯車など）の配置や形状に個体差が生じる場合がございます。これらの個体差は手作りならではの特徴としてご理解ください。</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 注意事項の開閉機能
+    const toggleButton = document.getElementById('toggleNotice');
+    const content = document.getElementById('noticeContent');
+    const icon = document.getElementById('toggleIcon');
+    
+    if (toggleButton && content && icon) {
+      toggleButton.addEventListener('click', () => {
+        content.classList.toggle('hidden');
+        // アイコンを回転させる
+        icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+      });
+    }
+  </script>
   <br>
 </Layout>
