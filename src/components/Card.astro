@@ -1,0 +1,361 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  mainImage: string;
+  colors: {
+    name: string;
+    image: string;
+    description: string;
+    link: string;
+  }[];
+  slides: string[];
+}
+
+const { name, description, mainImage, colors, slides } = Astro.props;
+---
+
+<div 
+  class="card w-full bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer hover:scale-[1.02]" 
+  data-theme="cupcake"
+  onclick={`
+    const manager = window.slideshowManagers['modal_${name.replace(/\s+/g, '_')}'];
+    const modal = manager.getModal();
+    if (modal) {
+      modal.addEventListener('close', function onClose() {
+        manager.stopSlideshow();
+        modal.removeEventListener('close', onClose);
+      });
+      modal.showModal();
+      manager.startSlideshow();
+    }
+  `}
+>
+  <figure class="overflow-hidden rounded-t-lg h-48">
+    <img src={mainImage} alt={name} class="w-full h-full object-cover" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title text-lg font-semibold">{name}</h2>
+    <p class="text-gray-600">{description}</p>
+  </div>
+</div>
+
+<script>
+  // スライドショー管理用のグローバルオブジェクトを初期化
+  if (!('slideshowManagers' in window)) {
+    window.slideshowManagers = {};
+  }
+</script>
+
+<!-- モーダルダイアログ -->
+<dialog id={`modal_${name.replace(/\s+/g, '_')}`} class="modal modal-middle">
+  <form method="dialog" class="modal-box sm:w-11/12 max-w-5xl p-4 sm:p-6 md:p-8 relative mx-auto w-screen min-h-screen sm:min-h-0 sm:h-auto">
+    <button 
+      class="btn btn-circle absolute right-4 top-4 bg-base-100 hover:bg-base-200 border-2 border-gray-300 hover:border-gray-400 text-gray-600 hover:text-gray-800 transition-all duration-200" 
+      onclick={`
+        const manager = window.slideshowManagers['modal_${name.replace(/\s+/g, '_')}'];
+        const modal = manager.getModal();
+        if (modal) {
+          modal.close();
+        }
+      `}
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <h3 class="font-bold text-2xl mb-6 text-center pr-8">{name}</h3>
+
+    <!-- スライダー部分 -->
+    <div class="carousel w-full mb-1 md:mb-8 rounded-lg overflow-hidden bg-black" style="height: min(32rem, 70vh);">
+      <style>
+        .carousel {
+          position: relative;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: rgb(255, 255, 255);
+        }
+        .carousel-item {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+        .carousel-item.active {
+          position: relative;
+          opacity: 1;
+          visibility: visible;
+        }
+      </style>
+      
+      {slides.map((slide, index) => {
+        const currentSlide = index + 1;
+        const prevSlide = currentSlide === 1 ? slides.length : currentSlide - 1;
+        const nextSlide = currentSlide === slides.length ? 1 : currentSlide + 1;
+        
+        return (
+          <div id={`slide${currentSlide}_${name.replace(/\s+/g, '_')}`} 
+               class={`carousel-item w-full h-full flex items-center justify-center ${currentSlide === 1 ? 'active' : ''}`}>
+            <img src={slide} class="max-w-full max-h-full w-auto h-auto object-contain mx-auto" style="max-height: min(30rem, 65vh);" />
+            <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+              <button onclick={`
+                event.preventDefault();
+                const manager = window.slideshowManagers['modal_${name.replace(/\s+/g, '_')}'];
+                if (manager) {
+                  const current = document.querySelector('#modal_${name.replace(/\s+/g, '_')} .carousel-item.active');
+                  if (current) {
+                    current.classList.remove('active');
+                    document.getElementById('slide${prevSlide}_${name.replace(/\s+/g, '_')}')?.classList.add('active');
+                  }
+                }
+                return false;
+              `} class="btn btn-circle" type="button">❮</button>
+              <button onclick={`
+                event.preventDefault();
+                const manager = window.slideshowManagers['modal_${name.replace(/\s+/g, '_')}'];
+                if (manager) {
+                  const current = document.querySelector('#modal_${name.replace(/\s+/g, '_')} .carousel-item.active');
+                  if (current) {
+                    current.classList.remove('active');
+                    document.getElementById('slide${nextSlide}_${name.replace(/\s+/g, '_')}')?.classList.add('active');
+                  }
+                }
+                return false;
+              `} class="btn btn-circle" type="button">❯</button>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- 商品詳細 -->
+    <div class="bg-base-100 p-4 sm:p-6 rounded-lg mb-4 sm:mb-6 md:mb-8">
+      <h4 class="font-semibold text-xl mb-4">商品詳細</h4>
+      <p class="text-gray-600">{description}</p>
+      <div class="divider"></div>
+      <h5 class="font-semibold mb-2">カラーバリエーション</h5>
+      <div class="flex flex-wrap gap-2">
+        {colors.map((color: { name: string }) => (
+          <span class="badge badge-outline">{color.name}</span>
+        ))}
+      </div>
+    </div>
+
+    <!-- カラーバリエーション（2列グリッド） -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+      {colors.map((color: { image: string; name: string; description: string; link: string }) => (
+        <div class="bg-base-100 p-3 sm:p-4 rounded-lg">
+          <img src={color.image} alt={`${name} - ${color.name}`} class="w-full rounded-lg mb-2" />
+          <h4 class="font-semibold">{color.name}</h4>
+          <p class="text-sm text-gray-600 mb-2">{color.description}</p>
+          <a href={color.link} class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">
+            購入ページ
+          </a>
+        </div>
+      ))}
+    </div>
+
+  </form>
+</dialog>
+
+<script define:vars={{ name, slides }}>
+  // グローバルなスライドショー管理オブジェクトを作成
+  if (!window.slideshowManagers) {
+    window.slideshowManagers = {};
+  }
+
+  const modalId = `modal_${name.replace(/\s+/g, '_')}`;
+  const DEBUG_PREFIX = `[Slideshow ${name}]`;
+
+  // このモーダル用のスライドショー管理オブジェクトを作成
+  const slideManager = {
+    interval: null,
+    currentIndex: 0,
+    modalId,
+    name,
+    slides,
+    DEBUG_PREFIX,
+
+    // モーダル要素を取得
+    getModal() {
+      return document.getElementById(this.modalId);
+    },
+
+    // 現在のモーダルに関連するハッシュかどうかを確認
+    isRelevantHash() {
+      const hash = window.location.hash;
+      if (!hash) return true; // ハッシュがない場合は有効とみなす
+      
+      // URLエンコードされたハッシュをデコード
+      const decodedHash = decodeURIComponent(hash);
+      const normalizedName = this.name.replace(/\s+/g, '_');
+      
+      // スライド番号とモーダル名のパターンをチェック
+      const pattern = new RegExp(`#slide\\d+_${normalizedName}$`);
+      return pattern.test(decodedHash);
+    },
+
+    // 現在のモーダルが開いているか確認する
+    isCurrentModalOpen() {
+      const modal = this.getModal();
+      return modal && modal.hasAttribute('open');
+    },
+
+    // 次のスライドに移動
+    moveToNextSlide() {
+      // モーダルの状態を取得して保存
+      const isModalOpen = this.isCurrentModalOpen();
+      
+      if (!isModalOpen) {
+        this.stopSlideshow();
+        return;
+      }
+      
+      // 現在のアクティブなスライドを特定
+      const currentSlideElement = document.querySelector(`#${this.modalId} .carousel-item.active`);
+      if (!currentSlideElement) {
+        // アクティブなスライドがない場合は最初のスライドを表示
+        const firstSlide = document.querySelector(`#${this.modalId} .carousel-item`);
+        if (firstSlide) {
+          firstSlide.classList.add('active');
+        }
+        return;
+      }
+      
+      // 現在のスライド番号を取得
+      const currentId = currentSlideElement.id;
+      const match = currentId.match(/slide(\d+)/);
+      if (!match) return;
+      
+      const currentSlide = parseInt(match[1]);
+      const nextSlide = currentSlide >= this.slides.length ? 1 : currentSlide + 1;
+      
+      // 現在のスライドを非アクティブ化
+      currentSlideElement.classList.remove('active');
+      
+      // 次のスライドをアクティブ化
+      const nextSlideElement = document.getElementById(`slide${nextSlide}_${this.name.replace(/\s+/g, '_')}`);
+      if (nextSlideElement) {
+        nextSlideElement.classList.add('active');
+      }
+    },
+
+    // スライドショーを開始
+    startSlideshow() {
+      const modal = this.getModal();
+      
+      if (!modal?.hasAttribute('open')) {
+        return;
+      }
+      
+      // 既存のインターバルをクリア
+      this.stopSlideshow();
+      
+      // モーダルとハッシュの状態が安定するのを待つ
+      setTimeout(() => {
+        // 最初のスライドを表示
+        const initialSlideElement = document.getElementById(`slide1_${this.name.replace(/\s+/g, '_')}`);
+        if (initialSlideElement) {
+          // 他のスライドのクラスを削除
+          const allSlides = document.querySelectorAll(`.carousel-item[id^='slide'][id$='_${this.name.replace(/\s+/g, '_')}']`);
+          allSlides.forEach(slide => slide.classList.remove('active'));
+          // 最初のスライドをアクティブ化
+          initialSlideElement.classList.add('active');
+        }
+        
+        // スライドショーを開始
+        if (!this.interval) {
+          this.interval = setInterval(() => {
+            if (!this.isCurrentModalOpen()) {
+              console.log(`${this.DEBUG_PREFIX} Modal closed, stopping slideshow`);
+              this.stopSlideshow();
+              return;
+            }
+            console.log(`${this.DEBUG_PREFIX} Attempting to move to next slide`);
+            this.moveToNextSlide();
+          }, 4000);
+          console.log(`${this.DEBUG_PREFIX} Slideshow interval started`);
+        }
+      }, 300); // 遅延を300msに増やして安定性を向上
+    },
+    
+    // スライドショーを停止
+    stopSlideshow() {
+      if (this.interval) {
+        clearInterval(this.interval);
+        this.interval = null;
+      }
+    }
+
+  // モーダルダイアログのイベントリスナー設定
+  }; // slideManagerオブジェクトの終了
+
+  // スライドショー管理オブジェクトをグローバルに登録
+  window.slideshowManagers[modalId] = slideManager;
+
+  // イベントリスナーの設定
+  const modalElement = document.getElementById(modalId);
+  if (modalElement) {
+    // showmodalイベントでスライドショーを開始
+    modalElement.addEventListener('showmodal', () => {
+      slideManager.startSlideshow();
+    });
+    
+    // closeイベントでスライドショーを停止
+    modalElement.addEventListener('close', () => {
+      slideManager.stopSlideshow();
+    });
+    
+    // 手動でスライドを切り替えた後も自動スライドを継続
+    window.addEventListener('hashchange', () => {
+      const currentHash = window.location.hash;
+      
+      // 現在のモーダルに関連するハッシュのみ処理
+      if (slideManager.isRelevantHash()) {
+        console.log(`${DEBUG_PREFIX} Hash change detected:`, currentHash);
+        
+        // モーダルが開いていて、スライドショーが停止している場合は再開
+        if (slideManager.isCurrentModalOpen()) {
+          if (!slideManager.interval) {
+            console.log(`${DEBUG_PREFIX} Restarting slideshow after manual navigation`);
+            slideManager.startSlideshow();
+          } else {
+            console.log(`${DEBUG_PREFIX} Slideshow is already running`);
+          }
+        }
+      }
+    });
+  }
+</script>
+
+<style>
+  dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  dialog.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+  }
+  @media (max-width: 640px) {
+    dialog.modal {
+      top: 0;
+      left: 0;
+      transform: none;
+      width: 100%;
+      height: 100%;
+      max-height: 100vh;
+      max-width: 100vw;
+      padding: 0;
+      margin: 0;
+    }
+  }
+</style>

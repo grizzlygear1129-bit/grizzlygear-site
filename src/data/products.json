@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "name": "長財布",
+    "description": "上質な革で仕立てた、使い込むほどに味わい深くなる長財布",
+    "mainImage": "/images/wallet/main-nagasaifu.jpg",
+    "slides": [
+      "/images/wallet/slide1.jpg",
+      "/images/wallet/slide2.jpg",
+      "/images/wallet/slide3.jpg"
+    ],
+    "colors": [
+      {
+        "name": "ブラウン",
+        "image": "/images/wallet/brown-nagasaifu.jpg",
+        "description": "経年変化が最も楽しめる王道カラー",
+        "link": "https://mercari-link/wallet-brown"
+      },
+      {
+        "name": "ブルー",
+        "image": "/images/wallet/blue-nagasaifu.jpg",
+        "description": "爽やかで印象的なアクセントカラー",
+        "link": "https://mercari-link/wallet-blue"
+      },
+      {
+        "name": "グリーン",
+        "image": "/images/wallet/green-nagasaifu.jpg",
+        "description": "自然な風合いの落ち着いたカラー",
+        "link": "https://mercari-link/wallet-green"
+      },
+      {
+        "name": "レッド",
+        "image": "/images/wallet/red-nagasaifu.jpg",
+        "description": "情熱的で印象的な差し色カラー",
+        "link": "https://mercari-link/wallet-red"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "スクエアケース",
+    "description": "コンパクトで機能的なスクエア型のカードケース",
+    "mainImage": "/images/square/main-square.jpg",
+    "slides": [
+      "/images/square/slide1.jpg",
+      "/images/square/slide2.jpg",
+      "/images/square/slide3.jpg"
+    ],
+    "colors": [
+      {
+        "name": "ブラウン",
+        "image": "/images/square/square-brown.jpg",
+        "description": "温かみのある落ち着いたカラー",
+        "link": "https://mercari-link/square-brown"
+      },
+      {
+        "name": "ブルー",
+        "image": "/images/square/square-blue.jpg",
+        "description": "爽やかで清潔感のあるカラー",
+        "link": "https://mercari-link/square-blue"
+      },
+      {
+        "name": "グリーン",
+        "image": "/images/square/square-green.jpg",
+        "description": "自然な風合いの落ち着いたカラー",
+        "link": "https://mercari-link/square-green"
+      },
+      {
+        "name": "レッド",
+        "image": "/images/square/square-red.jpg",
+        "description": "目を引くアクセントカラー",
+        "link": "https://mercari-link/square-red"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "デルタケース",
+    "description": "三角形のユニークなデザインのカードケース",
+    "mainImage": "/images/delta/main-delta.jpg",
+    "slides": [
+      "/images/delta/slide1.jpg",
+      "/images/delta/slide2.jpg",
+      "/images/delta/slide3.jpg",
+      "/images/delta/slide4.jpg"
+    ],
+    "colors": [
+      {
+        "name": "ブラウン",
+        "image": "/images/delta/delta-brown.jpg",
+        "description": "上品な風合いのクラシックカラー",
+        "link": "https://mercari-link/delta-brown"
+      },
+      {
+        "name": "ブルー",
+        "image": "/images/delta/delta-blue.jpg",
+        "description": "モダンな印象の爽やかなカラー",
+        "link": "https://mercari-link/delta-blue"
+      },
+      {
+        "name": "グリーン",
+        "image": "/images/delta/delta-green.jpg",
+        "description": "優しい色合いの人気カラー",
+        "link": "https://mercari-link/delta-green"
+      },
+      {
+        "name": "レッド",
+        "image": "/images/delta/delta-red.jpg",
+        "description": "個性を演出するアクセントカラー",
+        "link": "https://mercari-link/delta-red"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "キーケース",
+    "description": "スマートに鍵を収納できる機能的なキーケース",
+    "mainImage": "/images/key/main-key.jpg",
+    "slides": [
+      "/images/key/slide1.jpg",
+      "/images/key/slide2.jpg",
+      "/images/key/slide3.jpg"
+    ],
+    "colors": [
+      {
+        "name": "ブラウン",
+        "image": "/images/key/key-brown.jpg",
+        "description": "シンプルで使いやすい定番カラー",
+        "link": "https://mercari-link/key-brown"
+      },
+      {
+        "name": "ブルー",
+        "image": "/images/key/key-blue.jpg",
+        "description": "爽やかな印象のモダンカラー",
+        "link": "https://mercari-link/key-blue"
+      },
+      {
+        "name": "グリーン",
+        "image": "/images/key/key-green.jpg",
+        "description": "落ち着いた雰囲気の上品なカラー",
+        "link": "https://mercari-link/key-green"
+      },
+      {
+        "name": "レッド",
+        "image": "/images/key/key-red.jpg",
+        "description": "鮮やかで印象的なアクセントカラー",
+        "link": "https://mercari-link/key-red"
+      }
+    ]
+  }
+]
+

@@ -1,0 +1,73 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image: string;
+  content: string;
+  date: string;
+}
+
+const { title, description, image, content, date } = Astro.props;
+---
+
+<div 
+  class="card w-full bg-base-100 shadow hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-[1.01]"
+  onclick={`
+    const dialog = document.getElementById('news_${title.replace(/\s+/g, '_')}');
+    if (dialog) dialog.showModal();
+  `}
+>
+  <div class="card-body">
+    <div class="flex justify-between items-start mb-2">
+      <h3 class="card-title text-lg">{title}</h3>
+      <span class="text-sm text-gray-500">{date}</span>
+    </div>
+    <p class="text-gray-600">{description}</p>
+  </div>
+</div>
+
+<dialog id={`news_${title.replace(/\s+/g, '_')}`} class="modal modal-middle">
+  <form method="dialog" class="modal-box w-[95%] sm:w-11/12 max-w-4xl p-4 sm:p-6 md:p-8 relative mx-auto">
+    <button 
+      class="btn btn-circle absolute right-4 top-4 bg-base-100 hover:bg-base-200 border-2 border-gray-300 hover:border-gray-400 text-gray-600 hover:text-gray-800 transition-all duration-200"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    
+    <h3 class="font-bold text-2xl mb-6 text-center pr-8">{title}</h3>
+    
+    {image && (
+      <div class="mb-8 flex justify-center items-center">
+        <img 
+          src={image} 
+          alt={title} 
+          class="max-w-full max-h-[400px] w-auto h-auto object-contain rounded-lg" 
+        />
+      </div>
+    )}
+    
+    <div class="prose max-w-none">
+      <p class="whitespace-pre-wrap">{content}</p>
+    </div>
+    
+    <div class="text-right mt-6">
+      <span class="text-sm text-gray-500">{date}</span>
+    </div>
+  </form>
+</dialog>
+
+<style>
+  dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  dialog.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+  }
+</style>
