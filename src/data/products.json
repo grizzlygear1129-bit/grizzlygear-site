@@ -111,7 +111,7 @@
       {
         "name": "ブラウン",
         "image": "/images/delta/delta-brown.jpg",
-        "description": "上品な風合いのクラシックカラー",
+        "description": "温かみのある落ち着いたカラー",
         "link": "https://mercari-link/delta-brown"
       },
       {
@@ -177,6 +177,54 @@
         "image": "/images/key/key-red.jpg",
         "description": "鮮やかで印象的なアクセントカラー",
         "link": "https://mercari-link/key-red"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Type R",
+    "shortDescription": "シンプルなキーリングです",
+    "longDescription": "シンプルで使いやすいキーリングです。無駄のないデザインで、鍵をしっかりとホールドします。\nベルトなどに取り付けやすく、日常使いに最適です。\nカラー展開も豊富で、自分のスタイルに合わせて選べます。",
+    "capacity": {
+      "keys": "3本(デフォルト)"
+    },
+    "dimensions": {
+      "height": "約2.0cm",
+      "width": "約10.0cm",
+      "depth": "約1.5cm"
+    },
+    "mainImage": "/images/keyring/main-keyring.jpg",
+    "slides": [
+      "/images/keyring/slide1.jpg",
+      "/images/keyring/slide2.jpg",
+      "/images/keyring/slide3.jpg",
+      "/images/keyring/slide4.jpg",
+      "/images/keyring/slide5.jpg"
+    ],
+    "colors": [
+      {
+        "name": "ブラウン",
+        "image": "/images/keyring/ring-brown.jpg",
+        "description": "シンプルで使いやすい定番カラー",
+        "link": "https://mercari-link/keyring-brown"
+      },
+      {
+        "name": "ブルー",
+        "image": "/images/keyring/ring-blue.jpg",
+        "description": "爽やかで印象的なアクセントカラー",
+        "link": "https://mercari-link/keyring-blue"
+      },
+      {
+        "name": "グリーン",
+        "image": "/images/keyring/ring-green.jpg",
+        "description": "自然な風合いの落ち着いたカラー",
+        "link": "https://mercari-link/keyring-green"
+      },
+      {
+        "name": "レッド",
+        "image": "/images/keyring/ring-red.jpg",
+        "description": "情熱的で印象的な差し色カラー",
+        "link": "https://mercari-link/keyring-red"
       }
     ]
   }
