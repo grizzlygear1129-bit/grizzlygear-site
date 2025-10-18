@@ -23,13 +23,14 @@ interface Props {
     width: string;
     depth: string;
   };
+  newFlag?: number;
 }
 
-const { name, shortDescription, longDescription, mainImage, colors, slides, capacity, dimensions } = Astro.props;
+const { name, shortDescription, longDescription, mainImage, colors, slides, capacity, dimensions, newFlag } = Astro.props;
 ---
 
 <div 
-  class="card w-full bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer hover:scale-[1.02]" 
+  class="card w-full bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer hover:scale-[1.02] relative" 
   data-theme="cupcake"
   onclick={`
     const manager = window.slideshowManagers['modal_${name.replace(/\s+/g, '_')}'];
@@ -44,12 +45,24 @@ const { name, shortDescription, longDescription, mainImage, colors, slides, capa
     }
   `}
 >
+  {newFlag === 1 && (
+    <div class="absolute top-2 right-2 z-10">
+      <div class="relative">
+        {/* バッジの背景 */}
+        <div class="absolute inset-0 bg-white opacity-80 rounded-full blur-[2px]"></div>
+        {/* 赤い円 */}
+        <div class="relative bg-white-600 text-black text-xs font-bold px-3 py-1 rounded-full border-2 border-white shadow-md">
+          NEW
+        </div>
+      </div>
+    </div>
+  )}
   <figure class="overflow-hidden rounded-t-lg h-48">
     <img src={mainImage} alt={name} class="w-full h-full object-cover" />
   </figure>
   <div class="card-body">
     <h2 class="card-title text-lg font-semibold">{name}</h2>
-  <p class="text-gray-600">{shortDescription}</p>
+    <p class="text-gray-600">{shortDescription}</p>
   </div>
 </div>
 

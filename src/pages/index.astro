@@ -45,19 +45,22 @@ import news from '../data/news.json';
   <div class="max-w-7xl mx-auto px-6 my-12">
     <h2 class="text-2xl font-bold mb-6">商品一覧</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {products.map(product => (
-        <Card
-          key={product.id}
-          name={product.name}
-          shortDescription={product.shortDescription}
-          longDescription={product.longDescription}
-          mainImage={product.mainImage}
-          colors={product.colors}
-          slides={product.slides}
-          capacity={product.capacity}
-          dimensions={product.dimensions}
-        />
-      ))}
+      {products
+        .filter(product => !product.hideFlag) // hideFlagが設定されていない、または0の商品のみを表示
+        .map(product => (
+          <Card
+            key={product.id}
+            name={product.name}
+            shortDescription={product.shortDescription}
+            longDescription={product.longDescription}
+            mainImage={product.mainImage}
+            colors={product.colors}
+            slides={product.slides}
+            capacity={product.capacity}
+            dimensions={product.dimensions}
+            newFlag={product.newFlag}
+          />
+        ))}
     </div>
   </div>
 
