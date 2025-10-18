@@ -1,10 +1,29 @@
 [
   {
     "id": 1,
+    "hideFlag": 0,
+    "title": "GRIZZLY GEARのWebサイトプレ公開",
+    "description": "公式Webサイトをプレ公開しました。",
+    "content": "GRIZZLY GEARの公式Webサイトをプレ公開しました。\n\nWebサイトでは、製品ラインナップの詳細な紹介、最新ニュースやイベント情報など、様々なコンテンツを掲載しております。\n\n今後も定期的に更新してまいりますので、ぜひブックマークしてご覧ください。",
+    "image": "/images/logo.png",
+    "date": "2025年10月18日"
+  },
+  {
+    "id": 2,
+    "hideFlag": 1,
     "title": "GRIZZLY GEARのWebサイト公開",
-    "description": "インスタグラムの開設に加え、公式Webサイトを公開しました。",
+    "description": "公式Webサイトを公開しました。",
     "content": "GRIZZLY GEARの公式Webサイトを公開しました。\n\nWebサイトでは、製品ラインナップの詳細な紹介、最新ニュースやイベント情報など、様々なコンテンツを掲載しております。\n\n今後も定期的に更新してまいりますので、ぜひブックマークしてご覧ください。",
     "image": "/images/logo.png",
-    "date": "2025年10月15日"
+    "date": "202X年xx月xx日"
+  },
+  {
+    "id": 3,
+    "hideFlag": 1,
+    "title": "GRIZZLY GEARのInstagramを開設しました。",
+    "description": "公式Instagramを開設しました。",
+    "content": "GRIZZLY GEARの公式Instagramを開設しました。\n\nInstagramでは、製品の最新情報やイベントの様子などをお届けしてまいります。\n\nぜひフォローしてご覧ください。",
+    "image": "/images/logo.png",
+    "date": "202X年xx月xx日"
   }
 ]
