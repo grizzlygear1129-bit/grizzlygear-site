@@ -76,20 +76,28 @@ const { name, shortDescription, longDescription, mainImage, colors, slides, capa
 <!-- モーダルダイアログ -->
 <dialog id={`modal_${name.replace(/\s+/g, '_')}`} class="modal modal-middle">
   <form method="dialog" class="modal-box sm:w-11/12 max-w-5xl p-4 sm:p-6 md:p-8 relative mx-auto w-screen min-h-screen sm:min-h-0 sm:h-auto">
-    <button 
-      class="btn btn-circle absolute right-4 top-4 bg-base-100 hover:bg-base-200 border-2 border-gray-300 hover:border-gray-400 text-gray-600 hover:text-gray-800 transition-all duration-200" 
-      onclick={`
-        const manager = window.slideshowManagers['modal_${name.replace(/\s+/g, '_')}'];
-        const modal = manager.getModal();
-        if (modal) {
-          modal.close();
-        }
-      `}
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
+    <div class="sticky top-4 z-50 flex justify-end">
+      <div class="relative">
+        <!-- バッジと同じ背景ぼかし -->
+        <div class="absolute inset-0 bg-white opacity-80 rounded-full blur-[2px]"></div>
+        <button
+          class="relative bg-white-600 text-black text-sm font-bold px-3 py-1 rounded-full border-2 border-white shadow-md flex items-center justify-center transition-all duration-200"
+          onclick={`
+            const manager = window.slideshowManagers['modal_${name.replace(/\s+/g, '_')}'];
+            const modal = manager.getModal();
+            if (modal) {
+              modal.close();
+            }
+          `}
+          aria-label="閉じる"
+          type="button"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
     <h3 class="font-bold text-2xl mb-6 text-center pr-8">{name}</h3>
 
     <!-- スライダー部分 -->
@@ -362,6 +370,14 @@ const { name, shortDescription, longDescription, mainImage, colors, slides, capa
     // closeイベントでスライドショーを停止
     modalElement.addEventListener('close', () => {
       slideManager.stopSlideshow();
+    });
+
+    // ダイアログ外（バックドロップ）クリックで閉じる
+    modalElement.addEventListener('click', (e) => {
+      // クリックのターゲットが dialog 要素自身だった場合、モーダルの外側がクリックされたと判断
+      if (e.target === modalElement) {
+        modalElement.close();
+      }
     });
     
     // 手動でスライドを切り替えた後も自動スライドを継続
