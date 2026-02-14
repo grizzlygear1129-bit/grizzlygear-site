@@ -38,11 +38,11 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
   <div class="max-w-4xl mx-auto px-6 my-12 text-center">
     <!-- 表示を変えるボタン -->
     <div class="text-center my-8 flex justify-center">
-      <button id="brandBtn-grizzly" class="flex items-center justify-center gap-3 bg-white text-black px-6 py-3 rounded-l-lg hover:bg-gray-100 transition-colors cursor-pointer border-r border-gray-300" type="button">
-        <img src="/images/GG_logo.png" alt="GRIZZLY GEAR" class="h-6" />
+      <button id="brandBtn-grizzly" class="flex items-center justify-center bg-white bg-opacity-20 text-black px-8 py-4 rounded-l-lg border-2 border-black hover:bg-opacity-30 transition-all cursor-pointer" type="button">
+        <img src="/images/GG_logo.png" alt="GRIZZLY GEAR" class="h-8" />
       </button>
-      <button id="brandBtn-sleep" class="flex items-center justify-center gap-3 bg-black text-white px-6 py-3 rounded-r-lg hover:bg-gray-800 transition-colors cursor-pointer" type="button">
-        <img src="/images/SS_logo.png.png" alt="SEEP SLEEP" class="h-6" />
+      <button id="brandBtn-sleep" class="flex items-center justify-center bg-white bg-opacity-20 text-black px-8 py-4 rounded-r-lg border-2 border-black hover:bg-opacity-30 transition-all cursor-pointer" type="button">
+        <img src="/images/SS_logo.png.png" alt="SEEP SLEEP" class="h-8" />
       </button>
     </div>
     <!-- ブランド紹介 -->
@@ -138,6 +138,12 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
               <span class="text-warning mr-2 text-base">※</span>
               <span>ハンドメイド製品のため、商品ごとに若干のサイズの違いや、装飾に使用するパーツ（歯車など）の配置や形状に個体差が生じる場合がございます。これらの個体差は手作りならではの特徴としてご理解ください。</span>
             </li>
+            <li class="flex items-start">
+              <span class="text-warning mr-2 text-base">※</span>
+              <span>
+                一部の商品は手染めにて仕上げております。そのため、色むらや濃淡の個体差が生じる場合がございます。また、使用状況や摩擦、水濡れなどにより色移りする可能性がございますので、淡色の衣類との併用には十分ご注意ください。
+              </span>
+            </li>
           </ul>
         </div>
       </div>
@@ -153,7 +159,7 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
       },
       sleep: {
         description: '<span style="color: white;">SEEP SLEEP は、「静寂」と「安らぎ」をテーマにした革製品ブランドです。<br>日々の疲れを癒し、心地よい眠りへ導くデザインを心がけています。<br><br>柔らかく肌触りの良い上質な革を厳選し、<br>白、淡いベージュ、薄紫などの穏やかな色合いを基調としています。<br>使い込むほどに深まる艶と、時間とともに変化する色合いが、<br>あなたの人生の一ページを静かに彩る存在になることを願っています。</span><br>',
-        logo: '/images/SS_logo.png.png'
+        logo: '/images/SS_W_logo.png.png'
       }
     };
     
@@ -168,9 +174,10 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
     function setGrizzlyGear() {
       try {
         document.body.style.background = 'linear-gradient(180deg, #fafaf8 0%, #f3f4f6 100%)';
-        grizzlyBtn.style.backgroundColor = '#ffffff';
+        document.body.style.color = '#000000';
+        grizzlyBtn.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
         grizzlyBtn.style.color = '#000000';
-        sleepBtn.style.backgroundColor = '#f5f5f5';
+        sleepBtn.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
         sleepBtn.style.color = '#000000';
         if (descriptionElement) {
           descriptionElement.innerHTML = brandContent.grizzly.description;
@@ -182,6 +189,18 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
         document.querySelectorAll('.product-card-wrapper').forEach(el => {
           el.style.display = el.classList.contains('brand-grizzly') ? '' : 'none';
         });
+        // カードのサブテキストを元の色に戻す
+        document.querySelectorAll('.product-card-wrapper .text-gray-600').forEach(el => {
+          el.style.color = '';
+        });
+        // 新着情報の日付を元の色に戻す
+        document.querySelectorAll('.text-gray-500').forEach(el => {
+          el.style.color = '';
+        });
+        // 注意事項の内容を元の色に戻す
+        document.querySelectorAll('#noticeContent .text-gray-600').forEach(el => {
+          el.style.color = '';
+        });
       } catch (e) {
         console.error('Error in setGrizzlyGear:', e);
       }
@@ -190,10 +209,11 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
     // SEEP SLEEPブランド用
     function setSeepSleep() {
       try {
-        document.body.style.background = 'linear-gradient(180deg, #60a5fa 0%, #3b82f6 100%)';
-        sleepBtn.style.backgroundColor = '#ffffff';
+        document.body.style.background = 'linear-gradient(0deg, #ccae9f 0%, #28305d 40%, #050847 80%) no-repeat #383d95';
+        document.body.style.color = '#ffffff';
+        sleepBtn.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
         sleepBtn.style.color = '#000000';
-        grizzlyBtn.style.backgroundColor = '#f5f5f5';
+        grizzlyBtn.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
         grizzlyBtn.style.color = '#000000';
         if (descriptionElement) {
           descriptionElement.innerHTML = brandContent.sleep.description;
@@ -204,6 +224,26 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
         // 商品を表示/非表示
         document.querySelectorAll('.product-card-wrapper').forEach(el => {
           el.style.display = el.classList.contains('brand-sleep') ? '' : 'none';
+        });
+        // ダイアログの内容は黒色に指定
+        document.querySelectorAll('dialog').forEach(dialog => {
+          dialog.style.color = '#000000 !important';
+          // ダイアログ内のすべての要素の文字色を黒に統一
+          dialog.querySelectorAll('*').forEach(el => {
+            el.style.setProperty('color', '#000000', 'important');
+          });
+        });
+        // カードのサブテキストを白くする
+        document.querySelectorAll('.product-card-wrapper .text-gray-600').forEach(el => {
+          el.style.color = '#ffffff';
+        });
+        // 新着情報の日付を白くする
+        document.querySelectorAll('.text-gray-500').forEach(el => {
+          el.style.color = '#ffffff';
+        });
+        // 注意事項の内容を白くする
+        document.querySelectorAll('#noticeContent .text-gray-600').forEach(el => {
+          el.style.color = '#ffffff';
         });
       } catch (e) {
         console.error('Error in setSeepSleep:', e);
