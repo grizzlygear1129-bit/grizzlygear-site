@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "brand": "grizzly",
     "name": "Type SCW",
     "newFlag": 0,
     "hideFlag": 0,
@@ -45,6 +46,7 @@
   },
   {
     "id": 2,
+    "brand": "grizzly",
     "name": "Type S",
     "newFlag": 0,
     "hideFlag": 0,
@@ -93,6 +95,7 @@
   },
   {
     "id": 3,
+    "brand": "grizzly",
     "name": "Type D",
     "newFlag": 0,
     "hideFlag": 0,
@@ -142,6 +145,7 @@
   },
   {
     "id": 4,
+    "brand": "grizzly",
     "name": "Type K",
     "newFlag": 0,
     "hideFlag": 0,
@@ -190,6 +194,7 @@
   },
   {
     "id": 5,
+    "brand": "grizzly",
     "name": "Type R",
     "newFlag": 0,
     "hideFlag": 0,
@@ -240,7 +245,57 @@
   },
   {
     "id": 6,
+    "brand": "grizzly",
     "name": "Type C",
+    "newFlag": 0,
+    "hideFlag": 0,
+    "shortDescription": "シンプルなカードケースです",
+    "longDescription": "シンプルで使いやすいカードケースです。ベルトを引っ張ることで簡単にカードを取り出せます。\nカラー展開も豊富で、自分のスタイルに合わせて選べます。",
+    "capacity": {
+      "cards": "5枚"
+    },
+    "dimensions": {
+      "height": "約10.0cm",
+      "width": "約7.5cm",
+      "depth": "約1.0cm"
+    },
+    "mainImage": "/images/card/main-card.JPG",
+    "slides": [
+      "/images/card/slide1.JPG",
+      "/images/card/slide2.JPG",
+      "/images/card/slide3.JPG"
+    ],
+    "colors": [
+      {
+        "name": "ブラウン",
+        "image": "/images/card/card-brown.JPG",
+        "description": "シンプルで使いやすい定番カラー",
+        "link": "https://mercari-link/card-brown"
+      },
+      {
+        "name": "ブルー",
+        "image": "/images/card/card-blue.JPG",
+        "description": "爽やかで印象的なアクセントカラー",
+        "link": "https://mercari-link/card-blue"
+      },
+      {
+        "name": "グリーン",
+        "image": "/images/card/card-green.JPG",
+        "description": "自然な風合いの落ち着いたカラー",
+        "link": "https://mercari-link/card-green"
+      },
+      {
+        "name": "レッド",
+        "image": "/images/card/card-red.JPG",
+        "description": "情熱的で印象的な差し色カラー",
+        "link": "https://mercari-link/card-red"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "brand": "sleep",
+    "name": "Type SC",
     "newFlag": 0,
     "hideFlag": 0,
     "shortDescription": "シンプルなカードケースです",
