@@ -49,10 +49,10 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
   <div class="max-w-4xl mx-auto px-6 my-12 text-center">
     <!-- 表示を変えるボタン -->
     <div class="text-center my-8 flex justify-center">
-      <button id="brandBtn-grizzly" class="flex items-center justify-center bg-white bg-opacity-20 text-black px-8 py-4 rounded-l-lg border-2 border-black hover:bg-opacity-30 transition-all cursor-pointer" type="button">
+      <button id="brandBtn-grizzly" class="flex items-center justify-center bg-white bg-opacity-20 text-black px-8 py-4 rounded-l-3xl border-2 border-black hover:bg-opacity-30 transition-all cursor-pointer" type="button">
         <img src="/images/GG_logo.png" alt="GRIZZLY GEAR" class="h-8" />
       </button>
-      <button id="brandBtn-sleep" class="flex items-center justify-center bg-white bg-opacity-20 text-black px-8 py-4 rounded-r-lg border-2 border-black hover:bg-opacity-30 transition-all cursor-pointer" type="button">
+      <button id="brandBtn-sleep" class="flex items-center justify-center bg-white bg-opacity-20 text-black px-8 py-4 rounded-r-3xl border-2 border-black hover:bg-opacity-30 transition-all cursor-pointer" type="button">
         <img src="/images/SS_logo.png" alt="SEEP SLEEP" class="h-8" />
       </button>
     </div>
@@ -187,10 +187,14 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
         document.body.style.background = 'linear-gradient(180deg, #fafaf8 0%, #f3f4f6 100%)';
         document.body.style.backgroundAttachment = 'fixed';
         document.body.style.color = '#000000';
-        grizzlyBtn.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+        grizzlyBtn.style.backgroundColor = 'rgba(180, 180, 180, 0.1)';
         grizzlyBtn.style.color = '#000000';
-        sleepBtn.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+        grizzlyBtn.style.borderColor = '#000000';
+        grizzlyBtn.style.backgroundImage = 'none';
+        sleepBtn.style.backgroundImage = 'linear-gradient(0deg, rgba(204, 174, 159, 0.7) 0%, rgba(40, 48, 93, 0.7) 40%, rgba(5, 8, 71, 0.7) 80%, rgba(41, 82, 174, 0.7) 100%)';
+        sleepBtn.style.backgroundColor = 'transparent';
         sleepBtn.style.color = '#000000';
+        sleepBtn.style.borderColor = '#000000';
         if (descriptionElement) {
           descriptionElement.innerHTML = brandContent.grizzly.description;
         }
@@ -201,6 +205,11 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
         const instagramLogo = document.getElementById('instagramLogo');
         if (instagramLogo) {
           instagramLogo.src = '/images/external-service-icon/Instagram_Glyph_Black.png';
+        }
+        // SEEP SLEEPボタンのロゴを白のバージョンに
+        const sleepBtnImg = sleepBtn.querySelector('img');
+        if (sleepBtnImg) {
+          sleepBtnImg.src = '/images/SS_W_logo.png';
         }
         // minneリンクのスタイルを削除
         const minneLink = document.getElementById('minneLink');
@@ -245,10 +254,14 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
         document.body.style.background = 'linear-gradient(0deg, #ccae9f 0%, #28305d 40%, #050847 80%, #2952AE 100%)';
         document.body.style.backgroundAttachment = 'fixed';
         document.body.style.color = '#ffffff';
-        sleepBtn.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+        sleepBtn.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+        sleepBtn.style.backgroundImage = 'none';
         sleepBtn.style.color = '#000000';
-        grizzlyBtn.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+        sleepBtn.style.borderColor = '#ffffff';
+        grizzlyBtn.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+        grizzlyBtn.style.backgroundImage = 'none';
         grizzlyBtn.style.color = '#000000';
+        grizzlyBtn.style.borderColor = '#ffffff';
         if (descriptionElement) {
           descriptionElement.innerHTML = brandContent.sleep.description;
         }
@@ -259,6 +272,11 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
         const instagramLogo = document.getElementById('instagramLogo');
         if (instagramLogo) {
           instagramLogo.src = '/images/external-service-icon/Instagram_Glyph_White.png';
+        }
+        // SEEP SLEEPボタンのロゴを通常のバージョンに戻す
+        const sleepBtnImg = sleepBtn.querySelector('img');
+        if (sleepBtnImg) {
+          sleepBtnImg.src = '/images/SS_logo.png';
         }
         // minneリンクに白い背景を追加
         const minneLink = document.getElementById('minneLink');
