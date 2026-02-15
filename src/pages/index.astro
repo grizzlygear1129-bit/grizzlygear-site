@@ -76,16 +76,16 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
   </div>
 
   <!-- SNS / 外部サービスへのリンク -->
-  <div class="max-w-4xl mx-auto px-6 my-6">
+  <div id="externalLinks" class="max-w-4xl mx-auto px-6 my-6">
     <h2 class="text-2xl font-bold mb-6">最新情報や商品の購入はこちらから</h2>
     <div class="flex items-center justify-center gap-6">
       <!-- Instagram -->
       <a href="https://www.instagram.com/grizzly_gear_leather/" target="_blank" rel="noopener noreferrer" class="inline-block">
-        <img src="/images/external-service-icon/Instagram_Glyph_Black.png" alt="Instagram - GRIZZLY GEAR" class="h-20 w-auto" />
+        <img id="instagramLogo" src="/images/external-service-icon/Instagram_Glyph_Black.png" alt="Instagram - GRIZZLY GEAR" class="h-20 w-auto" />
       </a>
       　　<h1 class="text-2xl font-bold mb-6">|</h1>　　
       <!-- minne（URL未設定のためプレースホルダー） -->
-      <a href="https://minne.com/@grizzly-gear/profile" class="inline-block opacity-80 hover:opacity-100" aria-disabled="true" target="_blank">
+      <a href="https://minne.com/@grizzly-gear/profile" class="inline-block opacity-80 hover:opacity-100" aria-disabled="true" target="_blank" id="minneLink">
         <img src="/images/external-service-icon/minne_logo_vertical.png" alt="minne - 準備中" class="h-20 w-auto" />
       </a>
     </div>
@@ -174,6 +174,7 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
     function setGrizzlyGear() {
       try {
         document.body.style.background = 'linear-gradient(180deg, #fafaf8 0%, #f3f4f6 100%)';
+        document.body.style.backgroundAttachment = 'fixed';
         document.body.style.color = '#000000';
         grizzlyBtn.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
         grizzlyBtn.style.color = '#000000';
@@ -185,6 +186,22 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
         if (logoElement) {
           logoElement.src = brandContent.grizzly.logo;
         }
+        // Instagramロゴを黒に戻す
+        const instagramLogo = document.getElementById('instagramLogo');
+        if (instagramLogo) {
+          instagramLogo.src = '/images/external-service-icon/Instagram_Glyph_Black.png';
+        }
+        // minneリンクのスタイルを削除
+        const minneLink = document.getElementById('minneLink');
+        if (minneLink) {
+          minneLink.style.backgroundColor = '';
+          minneLink.style.padding = '';
+          minneLink.style.borderRadius = '';
+        }
+        // カードの背景色を元に戻す（商品カードのみ）
+        document.querySelectorAll('.product-card-wrapper .card').forEach(card => {
+          card.style.backgroundColor = '';
+        });
         // 商品を表示/非表示
         document.querySelectorAll('.product-card-wrapper').forEach(el => {
           el.style.display = el.classList.contains('brand-grizzly') ? '' : 'none';
@@ -209,7 +226,8 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
     // SEEP SLEEPブランド用
     function setSeepSleep() {
       try {
-        document.body.style.background = 'linear-gradient(0deg, #ccae9f 0%, #28305d 40%, #050847 80%) no-repeat #383d95';
+        document.body.style.background = 'linear-gradient(0deg, #ccae9f 0%, #28305d 40%, #050847 80%, #2952AE 100%)';
+        document.body.style.backgroundAttachment = 'fixed';
         document.body.style.color = '#ffffff';
         sleepBtn.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
         sleepBtn.style.color = '#000000';
@@ -220,6 +238,18 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
         }
         if (logoElement) {
           logoElement.src = brandContent.sleep.logo;
+        }
+        // Instagramロゴを白に変更
+        const instagramLogo = document.getElementById('instagramLogo');
+        if (instagramLogo) {
+          instagramLogo.src = '/images/external-service-icon/Instagram_Glyph_White.png';
+        }
+        // minneリンクに白い背景を追加
+        const minneLink = document.getElementById('minneLink');
+        if (minneLink) {
+          minneLink.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
+          minneLink.style.padding = '8px';
+          minneLink.style.borderRadius = '8px';
         }
         // 商品を表示/非表示
         document.querySelectorAll('.product-card-wrapper').forEach(el => {
@@ -232,6 +262,10 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
           dialog.querySelectorAll('*').forEach(el => {
             el.style.setProperty('color', '#000000', 'important');
           });
+        });
+        // カードの背景色を白の透過に（商品カードのみ）
+        document.querySelectorAll('.product-card-wrapper .card').forEach(card => {
+          card.style.backgroundColor = 'rgba(255, 255, 255, 0.3)';
         });
         // カードのサブテキストを白くする
         document.querySelectorAll('.product-card-wrapper .text-gray-600').forEach(el => {
