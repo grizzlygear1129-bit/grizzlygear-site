@@ -17,6 +17,17 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
       <img id="brandLogo" src="/images/GG_logo.png" alt="GrizzlyGear Logo" class="mx-auto h-30" />
     </div>
 
+  <!-- ブランド紹介 -->
+  <div id="brandIntro" class="max-w-4xl mx-auto px-6 my-12 text-center text-black leading-relaxed whitespace-pre-line">
+    GRIZZLY GEAR は、動物を軸に多様な要素を掛け合わせることで世界観を構築するレザーブランドです。
+
+    機構や概念、色彩といった異なる要素を取り入れながら、
+    それぞれのラインは動物の持つ象徴性と別のテーマを交差させて形づくられています。
+
+    ワンポイントのパーツや刻印、革の選定や染色に至るまで、すべてはラインごとの思想を可視化するために存在しています。
+    掛け合わせによって生まれる緊張感と調和を、ひとつの作品として提示しています。
+  </div>
+
   <!-- 新着情報 -->
   <div class="max-w-4xl mx-auto px-6 my-12">
     <h2 class="text-2xl font-bold mb-6">新着情報</h2>
@@ -42,10 +53,10 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
         <img src="/images/GG_logo.png" alt="GRIZZLY GEAR" class="h-8" />
       </button>
       <button id="brandBtn-sleep" class="flex items-center justify-center bg-white bg-opacity-20 text-black px-8 py-4 rounded-r-lg border-2 border-black hover:bg-opacity-30 transition-all cursor-pointer" type="button">
-        <img src="/images/SS_logo.png.png" alt="SEEP SLEEP" class="h-8" />
+        <img src="/images/SS_logo.png" alt="SEEP SLEEP" class="h-8" />
       </button>
     </div>
-    <!-- ブランド紹介 -->
+    <!-- ライン紹介 -->
     <p id="brandDescription" class="text-gray-600 leading-relaxed">
     </p>
   </div>
@@ -141,7 +152,7 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
             <li class="flex items-start">
               <span class="text-warning mr-2 text-base">※</span>
               <span>
-                一部の商品は手染めにて仕上げております。そのため、色むらや濃淡の個体差が生じる場合がございます。また、使用状況や摩擦、水濡れなどにより色移りする可能性がございますので、淡色の衣類との併用には十分ご注意ください。
+                一部の商品(SEEP SLEEP)は作者自身の手染めにて仕上げております。そのため、色むらや濃淡の個体差が生じる場合がございます。また、使用状況や摩擦、水濡れなどにより色移りする可能性がございますので、淡色の衣類との併用には十分ご注意ください。
               </span>
             </li>
           </ul>
@@ -154,12 +165,12 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
     // ブランド情報
     const brandContent = {
       grizzly: {
-        description: 'GRIZZLY GEAR は、「獣の野性」と「機械の無骨さ」を融合させたレザークラフトブランドです。<br>作品には、実際の歯車を使用した装飾や、<br>熊の爪を模したパーツなど、メカニカルでありながら野性的なデザインを施しています。<br><br>経年変化を楽しめる革を中心に使用しております。自然界に存在する色の深い緑、濃い茶、暗めの赤や青をベースに、<br>時を経て深みを増していく素材を選んでいます。<br>また、革にはあえて細かな擦り傷を加え、まるで森の中で生きてきたかのような風合いを表現し、<br>無骨でありながらどこか温かみのある表情を生み出しています。<br>',
+        description: 'GRIZZLY GEAR は、「獣の野性」と「機械の無骨さ」を融合させたレザークラフトラインです。<br>作品には、実際の歯車を使用した装飾や、<br>熊の爪を模したパーツなど、メカニカルでありながら野性的なデザインを施しています。<br><br>経年変化を楽しめる革を中心に使用しております。自然界に存在する色の深い緑、濃い茶、暗めの赤や青をベースに、<br>時を経て深みを増していく素材を選んでいます。<br>また、革にはあえて細かな擦り傷を加え、まるで森の中で生きてきたかのような風合いを表現し、<br>無骨でありながらどこか温かみのある表情を生み出しています。<br>',
         logo: '/images/GG_logo.png'
       },
       sleep: {
-        description: '<span style="color: white;">SEEP SLEEP は、「静寂」と「安らぎ」をテーマにした革製品ブランドです。<br>日々の疲れを癒し、心地よい眠りへ導くデザインを心がけています。<br><br>柔らかく肌触りの良い上質な革を厳選し、<br>白、淡いベージュ、薄紫などの穏やかな色合いを基調としています。<br>使い込むほどに深まる艶と、時間とともに変化する色合いが、<br>あなたの人生の一ページを静かに彩る存在になることを願っています。</span><br>',
-        logo: '/images/SS_W_logo.png.png'
+        description: '<span style="color: white;">SHEEP SLEEP は、静かな夜の情景をかたちにしたレザークラフトラインです。<br>生成りの革を一つひとつ手染めし、深い青から淡い青へと移ろう夜空のグラデーションを表現しています。同じ色合いは二つと存在せず、それぞれがわずかに異なる“夜”を宿します。<br><br>作品には、金色の三日月をワンポイントで刻印し、静かに佇みながら確かな存在感を放ちます。使い込むほどに艶と深みを増す革の質感とともに、時間とともに育つ、自分だけの夜をお楽しみください。</span><br>',
+        logo: '/images/SS_W_logo.png'
       }
     };
     
@@ -218,6 +229,11 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
         document.querySelectorAll('#noticeContent .text-gray-600').forEach(el => {
           el.style.color = '';
         });
+        // ブランド紹介の文字色を黒に戻す
+        const brandIntro = document.getElementById('brandIntro');
+        if (brandIntro) {
+          brandIntro.style.color = '';
+        }
       } catch (e) {
         console.error('Error in setGrizzlyGear:', e);
       }
@@ -279,6 +295,11 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
         document.querySelectorAll('#noticeContent .text-gray-600').forEach(el => {
           el.style.color = '#ffffff';
         });
+        // ブランド紹介の文字色を白に
+        const brandIntro = document.getElementById('brandIntro');
+        if (brandIntro) {
+          brandIntro.style.color = '#ffffff';
+        }
       } catch (e) {
         console.error('Error in setSeepSleep:', e);
       }

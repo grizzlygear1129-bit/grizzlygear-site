@@ -295,49 +295,156 @@
   {
     "id": 7,
     "brand": "sleep",
-    "name": "Type SC",
+    "name": "Luna Lip",
     "newFlag": 0,
     "hideFlag": 0,
-    "shortDescription": "シンプルなカードケースです",
-    "longDescription": "シンプルで使いやすいカードケースです。ベルトを引っ張ることで簡単にカードを取り出せます。\nカラー展開も豊富で、自分のスタイルに合わせて選べます。",
+    "shortDescription": "筒状のリップケースです",
+    "longDescription": "シンプルで使いやすいリップケースです。カシメを外すことで簡単にリップを取り出せます。",
     "capacity": {
-      "cards": "5枚"
+      "lipstick": "1本"
     },
     "dimensions": {
-      "height": "約10.0cm",
-      "width": "約7.5cm",
-      "depth": "約1.0cm"
+      "height": "約10.5cm",
+      "width": "約3.0cm",
+      "depth": "約3.0cm"
     },
-    "mainImage": "/images/card/main-card.JPG",
+    "mainImage": "/images/lip/main-lip.JPG",
     "slides": [
-      "/images/card/slide1.JPG",
-      "/images/card/slide2.JPG",
-      "/images/card/slide3.JPG"
+      "/images/lip/slide1.JPG",
+      "/images/lip/slide2.JPG",
+      "/images/lip/slide3.JPG"
     ],
     "colors": [
       {
-        "name": "ブラウン",
-        "image": "/images/card/card-brown.JPG",
-        "description": "シンプルで使いやすい定番カラー",
-        "link": "https://mercari-link/card-brown"
-      },
+        "name": "ブルー",
+        "image": "/images/lip/main-lip.JPG",
+        "description": "8cmmのリップがぴったり収まるサイズです。",
+        "link": "https://mercari-link/lip-brown"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "brand": "sleep",
+    "name": "Luna Fold",
+    "newFlag": 0,
+    "hideFlag": 0,
+    "shortDescription": "3つ折りの財布です",
+    "longDescription": "シンプルな財布で、カードや紙幣、小銭を収納できます。ベルトを引っ張ることで簡単にカードを取り出せます。",
+    "capacity": {
+      "bills": "5枚",
+      "coins": "10枚",
+      "cards": "4枚"
+    },
+    "dimensions": {
+      "height": "約8.0cm",
+      "width": "約10cm",
+      "depth": "約3.5cm"
+    },
+    "mainImage": "/images/fold/main-fold.JPG",
+    "slides": [
+      "/images/fold/slide1.JPG",
+      "/images/fold/slide2.JPG",
+      "/images/fold/slide3.JPG",
+      "/images/fold/slide4.JPG"
+    ],
+    "colors": [
       {
         "name": "ブルー",
-        "image": "/images/card/card-blue.JPG",
-        "description": "爽やかで印象的なアクセントカラー",
-        "link": "https://mercari-link/card-blue"
-      },
+        "image": "/images/fold/main-fold.JPG",
+        "description": "小さいながらも収納力のある財布です。",
+        "link": "https://mercari-link/fold-blue"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "brand": "sleep",
+    "name": "Luna Triangle",
+    "newFlag": 0,
+    "hideFlag": 0,
+    "shortDescription": "コンパクトなコインケースです",
+    "longDescription": "シンプルなコインケースで、小銭を収納できます。",
+    "capacity": {
+      "coins": "25枚"
+    },
+    "dimensions": {
+      "height": "約9.0cm",
+      "width": "約9.0cm",
+      "depth": "約2.0cm"
+    },
+    "mainImage": "/images/triangle/main-triangle.JPG",
+    "slides": [
+      "/images/triangle/slide1.JPG",
+      "/images/triangle/slide2.JPG",
+      "/images/triangle/slide3.JPG"
+    ],
+    "colors": [
       {
-        "name": "グリーン",
-        "image": "/images/card/card-green.JPG",
-        "description": "自然な風合いの落ち着いたカラー",
-        "link": "https://mercari-link/card-green"
-      },
+        "name": "ブルー",
+        "image": "/images/triangle/main-triangle.JPG",
+        "description": "小さいながらも収納力のあるコインケースです。",
+        "link": "https://mercari-link/triangle-blue"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "brand": "sleep",
+    "name": "Luna Braid",
+    "newFlag": 0,
+    "hideFlag": 0,
+    "shortDescription": "三つ編みのブレスレットです",
+    "longDescription": "シンプルなブレスレットで、手首にアクセントを加えます。三つ編みのデザインが特徴的で、カジュアルなスタイルにぴったりです。",
+    "capacity": {
+    },
+    "dimensions": {
+      "round": "約21.0cm"
+    },
+    "mainImage": "/images/braid/main-braid.JPG",
+    "slides": [
+      "/images/braid/slide1.JPG",
+      "/images/braid/slide2.JPG",
+      "/images/braid/slide3.JPG"
+    ],
+    "colors": [
       {
-        "name": "レッド",
-        "image": "/images/card/card-red.JPG",
-        "description": "情熱的で印象的な差し色カラー",
-        "link": "https://mercari-link/card-red"
+        "name": "ブルー",
+        "image": "/images/braid/main-braid.JPG",
+        "description": "三つ編みのデザインが特徴的なブレスレットです。",
+        "link": "https://mercari-link/braid-blue"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "brand": "sleep",
+    "name": "Luna Mini",
+    "newFlag": 0,
+    "hideFlag": 0,
+    "shortDescription": "ミニウォレットです",
+    "longDescription": "とてもコンパクトな財布で、必要最低限の紙幣と小銭を収納できます。※カードは収納できません。",
+    "capacity": {
+      "bills": "2枚",
+      "coins": "8枚"
+    },
+    "dimensions": {
+      "height": "約10.0cm",
+      "width": "約3.0cm",
+      "depth": "約2.5cm"
+    },
+    "mainImage": "/images/mini/main-min.JPG",
+    "slides": [
+      "/images/mini/slide1.JPG",
+      "/images/mini/slide2.JPG",
+      "/images/mini/slide3.JPG"
+    ],
+    "colors": [
+      {
+        "name": "ブルー",
+        "image": "/images/mini/main-min.JPG",
+        "description": "小さいながらも収納力のあるミニウォレットです。",
+        "link": "https://mercari-link/mini-blue"
       }
     ]
   }

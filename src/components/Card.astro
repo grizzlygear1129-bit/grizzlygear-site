@@ -184,6 +184,7 @@ const { name, shortDescription, longDescription, mainImage, colors, slides, capa
               {capacity.coins && <li>小銭：{capacity.coins}</li>}
               {capacity.cards && <li>カード：{capacity.cards}</li>}
               {capacity.keys && <li>鍵：{capacity.keys}</li>}
+              {capacity.lipstick && <li>リップ：{capacity.lipstick}</li>}
             </ul>
           </div>
         )}
@@ -191,9 +192,10 @@ const { name, shortDescription, longDescription, mainImage, colors, slides, capa
         <div>
           <h5 class="font-semibold mb-2">サイズ</h5>
           <ul class="list-disc list-inside text-gray-600 space-y-1">
-            <li>縦：{dimensions.height}</li>
-            <li>横：{dimensions.width}</li>
-            <li>厚さ：{dimensions.depth}</li>
+            {dimensions.height && <li>縦：{dimensions.height}</li>}
+            {dimensions.width && <li>横：{dimensions.width}</li>}
+            {dimensions.depth && <li>厚さ：{dimensions.depth}</li>}
+            {dimensions.round && <li>腕回り：{dimensions.round}</li>}
           </ul>
         </div>
       </div>
