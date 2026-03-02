@@ -330,7 +330,7 @@
     "brand": "sleep",
     "name": "Luna Fold",
     "newFlag": 0,
-    "hideFlag": 1,
+    "hideFlag": 0,
     "shortDescription": "3つ折りの財布です",
     "longDescription": "シンプルな財布で、カードや紙幣、小銭を収納できます。ベルトを引っ張ることで簡単にカードを取り出せます。",
     "capacity": {
@@ -343,17 +343,19 @@
       "width": "約10cm",
       "depth": "約3.5cm"
     },
-    "mainImage": "/images/Luna-Fold/main.JPG",
+    "mainImage": "/images/Luna-Fold/main.jpg",
     "slides": [
-      "/images/Luna-Fold/slide1.JPG",
+      "/images/Luna-Fold/slide1.jpg",
       "/images/Luna-Fold/slide2.JPG",
       "/images/Luna-Fold/slide3.JPG",
-      "/images/Luna-Fold/slide4.JPG"
+      "/images/Luna-Fold/slide4.JPG",
+      "/images/Luna-Fold/slide5.JPG",
+      "/images/Luna-Fold/slide6.JPG"
     ],
     "colors": [
       {
         "name": "ブルー",
-        "image": "/images/Luna-Fold/color-ブルー.JPG",
+        "image": "/images/Luna-Fold/color-ブルー.jpg",
         "description": "小さいながらも収納力のある財布です。",
         "link": "https://mercari-link/fold-blue"
       }
