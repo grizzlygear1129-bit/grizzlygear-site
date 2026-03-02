@@ -330,7 +330,7 @@
     "brand": "sleep",
     "name": "Luna Fold",
     "newFlag": 0,
-    "hideFlag": 0,
+    "hideFlag": 1,
     "shortDescription": "3つ折りの財布です",
     "longDescription": "シンプルな財布で、カードや紙幣、小銭を収納できます。ベルトを引っ張ることで簡単にカードを取り出せます。",
     "capacity": {
@@ -343,17 +343,17 @@
       "width": "約10cm",
       "depth": "約3.5cm"
     },
-    "mainImage": "/images/fold/main-fold.JPG",
+    "mainImage": "/images/Luna-Fold/main.JPG",
     "slides": [
-      "/images/fold/slide1.JPG",
-      "/images/fold/slide2.JPG",
-      "/images/fold/slide3.JPG",
-      "/images/fold/slide4.JPG"
+      "/images/Luna-Fold/slide1.JPG",
+      "/images/Luna-Fold/slide2.JPG",
+      "/images/Luna-Fold/slide3.JPG",
+      "/images/Luna-Fold/slide4.JPG"
     ],
     "colors": [
       {
         "name": "ブルー",
-        "image": "/images/fold/main-fold.JPG",
+        "image": "/images/Luna-Fold/color-ブルー.JPG",
         "description": "小さいながらも収納力のある財布です。",
         "link": "https://mercari-link/fold-blue"
       }
@@ -398,8 +398,7 @@
     "hideFlag": 0,
     "shortDescription": "三つ編みのブレスレットです",
     "longDescription": "シンプルなブレスレットで、手首にアクセントを加えます。三つ編みのデザインが特徴的で、カジュアルなスタイルにぴったりです。",
-    "capacity": {
-    },
+    "capacity": {},
     "dimensions": {
       "round": "約21.0cm"
     },
@@ -451,4 +450,3 @@
     ]
   }
 ]
-
