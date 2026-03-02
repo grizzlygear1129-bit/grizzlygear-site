@@ -343,9 +343,9 @@
       "width": "約10cm",
       "depth": "約3.5cm"
     },
-    "mainImage": "/images/Luna-Fold/main.jpg",
+    "mainImage": "/images/Luna-Fold/main.JPG",
     "slides": [
-      "/images/Luna-Fold/slide1.jpg",
+      "/images/Luna-Fold/slide1.JPG",
       "/images/Luna-Fold/slide2.JPG",
       "/images/Luna-Fold/slide3.JPG",
       "/images/Luna-Fold/slide4.JPG",
@@ -355,7 +355,7 @@
     "colors": [
       {
         "name": "ブルー",
-        "image": "/images/Luna-Fold/color-ブルー.jpg",
+        "image": "/images/Luna-Fold/color-ブルー.JPG",
         "description": "小さいながらも収納力のある財布です。",
         "link": "https://mercari-link/fold-blue"
       }
