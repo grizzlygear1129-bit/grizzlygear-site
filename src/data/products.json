@@ -17,28 +17,29 @@
       "width": "約17.5cm",
       "depth": "約2.5cm"
     },
-    "mainImage": "/images/wallet/main-nagasaifu.jpg",
+    "mainImage": "/images/Type-SCW/main.jpg",
     "slides": [
-      "/images/wallet/slide1.jpg",
-      "/images/wallet/slide2.jpg",
-      "/images/wallet/slide3.jpg"
+      "/images/Type-SCW/slide1.jpg",
+      "/images/Type-SCW/slide2.jpg",
+      "/images/Type-SCW/slide3.jpg",
+      "/images/Type-SCW/slide4.jpg"
     ],
     "colors": [
       {
         "name": "ブルー",
-        "image": "/images/wallet/blue-nagasaifu.jpg",
+        "image": "/images/Type-SCW/color-ブルー.jpg",
         "description": "爽やかで印象的なアクセントカラー",
         "link": "https://mercari-link/wallet-blue"
       },
       {
         "name": "グリーン",
-        "image": "/images/wallet/green-nagasaifu.jpg",
+        "image": "/images/Type-SCW/color-グリーン.jpg",
         "description": "自然な風合いの落ち着いたカラー",
         "link": "https://mercari-link/wallet-green"
       },
       {
         "name": "レッド",
-        "image": "/images/wallet/red-nagasaifu.jpg",
+        "image": "/images/Type-SCW/color-レッド.jpg",
         "description": "情熱的で印象的な差し色カラー",
         "link": "https://mercari-link/wallet-red"
       }
