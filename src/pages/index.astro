@@ -64,6 +64,9 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
   <!-- 星空エフェクト（Sleep ブランドのみ） -->
   <div id="starry_sky" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5;"></div>
 
+  <!-- 月（Sleep ブランドのみ） -->
+  <div id="moon" class="moon-element" style="display: none; position: fixed; top: 130px; right: 80px; pointer-events: none; z-index: 1;"></div>
+
   <!-- 商品一覧 -->
   <div class="max-w-7xl mx-auto px-6 my-12" style="position: relative; z-index: 10;">
     <h2 class="text-2xl font-bold mb-6">商品一覧</h2>
@@ -197,6 +200,24 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
       }
     }
 
+    // 月エフェクト生成関数（デザイン三日月）
+    function createMoon() {
+      const moon = document.getElementById('moon');
+      if (!moon) return;
+      
+      moon.style.filter = 'drop-shadow(0 0 8px rgba(255, 237, 161, 0.9)) drop-shadow(0 0 22px rgba(255, 237, 161, 0.45))';
+      
+      moon.innerHTML = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+        <defs>
+          <mask id="crescentMask">
+            <rect width="100" height="100" fill="white"/>
+            <circle cx="28" cy="44" r="38" fill="black"/>
+          </mask>
+        </defs>
+        <circle cx="50" cy="50" r="42" fill="#FFEDA1" mask="url(#crescentMask)"/>
+      </svg>`;
+    }
+
     // ブランド情報
     const brandContent = {
       grizzly: {
@@ -229,6 +250,15 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
           starSky.style.display = 'none';
           starSky.innerHTML = '';
         }
+        
+        // 月を非表示
+        const moon = document.getElementById('moon');
+        if (moon) {
+          moon.style.display = 'none';
+          moon.style.filter = '';
+          moon.innerHTML = '';
+        }
+        
         grizzlyBtn.style.backgroundColor = 'rgba(180, 180, 180, 0.1)';
         grizzlyBtn.style.color = '#000000';
         grizzlyBtn.style.borderColor = '#000000';
@@ -303,6 +333,14 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
           starSky.style.display = 'block';
           createStars(1000);
         }
+        
+        // 月を表示
+        const moon = document.getElementById('moon');
+        if (moon) {
+          moon.style.display = 'block';
+          createMoon();
+        }
+        
         sleepBtn.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
         sleepBtn.style.backgroundImage = 'none';
         sleepBtn.style.color = '#000000';
@@ -408,6 +446,15 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
 
   <style>
     /* 星空エフェクトのスタイル */
+    .moon-element {
+      width: 200px;
+      height: 200px;
+    }
+    @media (max-width: 640px) {
+      .moon-element {
+        display: none !important;
+      }
+    }
     @keyframes twinkle {
       0% {
         opacity: 1;
