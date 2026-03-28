@@ -67,6 +67,9 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
   <!-- 月（Sleep ブランドのみ） -->
   <div id="moon" class="moon-element" style="display: none; position: fixed; top: 130px; right: 80px; pointer-events: none; z-index: 1;"></div>
 
+  <!-- 雲（Sleep ブランドのみ） -->
+  <div id="clouds" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; overflow: hidden;"></div>
+
   <!-- 商品一覧 -->
   <div class="max-w-7xl mx-auto px-6 my-12" style="position: relative; z-index: 10;">
     <h2 class="text-2xl font-bold mb-6">商品一覧</h2>
@@ -200,6 +203,52 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
       }
     }
 
+    // 雲エフェクト生成関数
+    function createClouds() {
+      const cloudsEl = document.getElementById('clouds');
+      if (!cloudsEl) return;
+      cloudsEl.innerHTML = '';
+
+      const isPC = window.innerWidth > 640;
+      const scale = isPC ? 2.0 : 1.0;
+      const cloudConfigs = [
+        { top: '8%',  width: 260, height: 70,  duration: 38, delay: 0   },
+        { top: '18%', width: 180, height: 50,  duration: 52, delay: -14 },
+        { top: '30%', width: 320, height: 80,  duration: 44, delay: -8  },
+        { top: '45%', width: 200, height: 55,  duration: 60, delay: -25 },
+        { top: '58%', width: 150, height: 42,  duration: 35, delay: -5  },
+        { top: '70%', width: 280, height: 65,  duration: 48, delay: -20 },
+        { top: '80%', width: 220, height: 58,  duration: 55, delay: -32 },
+      ].map(cfg => ({ ...cfg, width: Math.round(cfg.width * scale), height: Math.round(cfg.height * scale) }));
+
+      cloudConfigs.forEach(cfg => {
+        const cloud = document.createElement('div');
+        cloud.className = 'cloud-item';
+        cloud.style.position = 'absolute';
+        cloud.style.top = cfg.top;
+        cloud.style.left = '-' + (cfg.width + 40) + 'px';
+        cloud.style.width = cfg.width + 'px';
+        cloud.style.height = cfg.height + 'px';
+        cloud.style.opacity = '0.12';
+        cloud.style.animation = `cloudFlow ${cfg.duration}s ${cfg.delay}s linear infinite`;
+
+        // SVGで綿雲状のシルエット
+        const rx = cfg.width / 2;
+        const ry = cfg.height / 2;
+        const bx = cfg.width;
+        const by = cfg.height;
+        cloud.innerHTML = `<svg viewBox="0 0 ${bx} ${by}" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <ellipse cx="${bx*0.5}" cy="${by*0.75}" rx="${rx*0.95}" ry="${ry*0.45}" fill="white"/>
+          <ellipse cx="${bx*0.35}" cy="${by*0.52}" rx="${rx*0.42}" ry="${ry*0.52}" fill="white"/>
+          <ellipse cx="${bx*0.55}" cy="${by*0.38}" rx="${rx*0.38}" ry="${ry*0.45}" fill="white"/>
+          <ellipse cx="${bx*0.72}" cy="${by*0.55}" rx="${rx*0.32}" ry="${ry*0.40}" fill="white"/>
+          <ellipse cx="${bx*0.2}"  cy="${by*0.65}" rx="${rx*0.25}" ry="${ry*0.33}" fill="white"/>
+        </svg>`;
+
+        cloudsEl.appendChild(cloud);
+      });
+    }
+
     // 月エフェクト生成関数（デザイン三日月）
     function createMoon() {
       const moon = document.getElementById('moon');
@@ -257,6 +306,13 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
           moon.style.display = 'none';
           moon.style.filter = '';
           moon.innerHTML = '';
+        }
+
+        // 雲を非表示
+        const clouds = document.getElementById('clouds');
+        if (clouds) {
+          clouds.style.display = 'none';
+          clouds.innerHTML = '';
         }
         
         grizzlyBtn.style.backgroundColor = 'rgba(180, 180, 180, 0.1)';
@@ -339,6 +395,13 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
         if (moon) {
           moon.style.display = 'block';
           createMoon();
+        }
+
+        // 雲を表示
+        const clouds = document.getElementById('clouds');
+        if (clouds) {
+          clouds.style.display = 'block';
+          createClouds();
         }
         
         sleepBtn.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
@@ -454,6 +517,10 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
       .moon-element {
         display: none !important;
       }
+    }
+    @keyframes cloudFlow {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(calc(100vw + 400px)); }
     }
     @keyframes twinkle {
       0% {
