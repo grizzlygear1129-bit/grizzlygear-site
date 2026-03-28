@@ -61,8 +61,11 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
     </p>
   </div>
 
+  <!-- 星空エフェクト（Sleep ブランドのみ） -->
+  <div id="starry_sky" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5;"></div>
+
   <!-- 商品一覧 -->
-  <div class="max-w-7xl mx-auto px-6 my-12">
+  <div class="max-w-7xl mx-auto px-6 my-12" style="position: relative; z-index: 10;">
     <h2 class="text-2xl font-bold mb-6">商品一覧</h2>
     <div id="productContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {products
@@ -162,6 +165,38 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
   </div>
 
   <script define:vars={{ allProducts: products }}>
+    // 星空エフェクト生成関数
+    function createStars(count = 1000) {
+      const starSky = document.getElementById('starry_sky');
+      if (!starSky) return;
+      
+      // 既存の星をクリア
+      starSky.innerHTML = '';
+      
+      for (let i = 0; i < count; i++) {
+        // ランダムな位置（ビューポートの%）
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        const diameter = Math.random() * 4 + 0.5;
+        const duration = Math.random() * 2 + 1.5;
+        
+        // 星要素を作成
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.position = 'fixed';
+        star.style.width = diameter + 'px';
+        star.style.height = diameter + 'px';
+        star.style.left = x + 'vw';
+        star.style.top = y + 'vh';
+        star.style.backgroundColor = 'white';
+        star.style.borderRadius = '50%';
+        star.style.pointerEvents = 'none';
+        star.style.animation = `twinkle ${duration}s infinite`;
+        
+        starSky.appendChild(star);
+      }
+    }
+
     // ブランド情報
     const brandContent = {
       grizzly: {
@@ -187,6 +222,13 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
         document.body.style.background = 'linear-gradient(180deg, #fafaf8 0%, #f3f4f6 100%)';
         document.body.style.backgroundAttachment = 'fixed';
         document.body.style.color = '#000000';
+        
+        // 星空エフェクトを非表示
+        const starSky = document.getElementById('starry_sky');
+        if (starSky) {
+          starSky.style.display = 'none';
+          starSky.innerHTML = '';
+        }
         grizzlyBtn.style.backgroundColor = 'rgba(180, 180, 180, 0.1)';
         grizzlyBtn.style.color = '#000000';
         grizzlyBtn.style.borderColor = '#000000';
@@ -254,6 +296,13 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
         document.body.style.background = 'linear-gradient(0deg, #ccae9f 0%, #28305d 40%, #050847 80%, #2952AE 100%)';
         document.body.style.backgroundAttachment = 'fixed';
         document.body.style.color = '#ffffff';
+        
+        // 星空エフェクトを表示
+        const starSky = document.getElementById('starry_sky');
+        if (starSky) {
+          starSky.style.display = 'block';
+          createStars(1000);
+        }
         sleepBtn.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
         sleepBtn.style.backgroundImage = 'none';
         sleepBtn.style.color = '#000000';
@@ -356,5 +405,31 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
       });
     }
   </script>
+
+  <style>
+    /* 星空エフェクトのスタイル */
+    @keyframes twinkle {
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      25% {
+        opacity: 0.7;
+        transform: scale(0.5);
+      }
+      50% {
+        opacity: 0.3;
+        transform: scale(0.2);
+      }
+      75% {
+        opacity: 0.7;
+        transform: scale(0.5);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
   <br>
 </Layout>
