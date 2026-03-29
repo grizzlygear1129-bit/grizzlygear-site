@@ -13,7 +13,7 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
 <Layout>
 
   <!-- ロゴ -->
-    <div class="text-center my-8">
+    <div id="logoWrapper" class="text-center my-8">
       <img id="brandLogo" src="/images/GG_logo.png" alt="GrizzlyGear Logo" class="mx-auto h-30" />
     </div>
 
@@ -76,17 +76,17 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
   <!-- 木・枝（Grizzly ブランドのみ） -->
   <div id="nature-deco" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 3; overflow: hidden;">
     <!-- 木：左下（見切れ） -->
-    <img src="/images/material/木.png" alt="" style="position:absolute; bottom:0; left:-100px; width:520px; height:auto; object-fit:contain; object-position:bottom left; opacity:0.55;" />
-    <!-- 木：右下（見切れ） -->
-    <img src="/images/material/木.png" alt="" style="position:absolute; bottom:0; right:-100px; width:520px; height:auto; object-fit:contain; object-position:bottom right; opacity:0.55;" />
+    <img src="/images/material/木.png" alt="" class="nd-tree-left" style="position:absolute; bottom:0; left:-100px; width:520px; height:auto; object-fit:contain; object-position:bottom left; opacity:0.55;" />
+    <!-- 木：右下（見切れ）スマホ非表示 -->
+    <img src="/images/material/木.png" alt="" class="nd-right-hide" style="position:absolute; bottom:0; right:-100px; width:520px; height:auto; object-fit:contain; object-position:bottom right; opacity:0.55;" />
     <!-- 枝１：左上（大きく見切れ） -->
-    <img src="/images/material/枝１.png" alt="" style="position:absolute; top:5%; left:-180px; width:400px; height:auto; opacity:0.55;" />
+    <img src="/images/material/枝１.png" alt="" class="nd-branch-left1" style="position:absolute; top:5%; left:-180px; width:400px; height:auto; opacity:0.55;" />
     <!-- 枝２：左中（見切れ） -->
-    <img src="/images/material/枝２.png" alt="" style="position:absolute; top:42%; left:-30px; width:360px; height:auto; opacity:0.55;" />
-    <!-- 枝１：右中上（左右反転・大きく見切れ） -->
-    <img src="/images/material/枝１.png" alt="" style="position:absolute; top:10%; right:-130px; width:400px; height:auto; transform:scaleX(-1); opacity:0.55;" />
-    <!-- 枝２：右中下（左右反転・見切れ） -->
-    <img src="/images/material/枝２.png" alt="" style="position:absolute; top:40%; right:-50px; width:360px; height:auto; transform:scaleX(-1); opacity:0.55;" />
+    <img src="/images/material/枝２.png" alt="" class="nd-branch-left2" style="position:absolute; top:42%; left:-30px; width:360px; height:auto; opacity:0.55;" />
+    <!-- 枝１：右中上（左右反転・大きく見切れ）スマホ非表示 -->
+    <img src="/images/material/枝１.png" alt="" class="nd-right-hide" style="position:absolute; top:10%; right:-130px; width:400px; height:auto; transform:scaleX(-1); opacity:0.55;" />
+    <!-- 枝２：右中下（左右反転・見切れ）スマホ非表示 -->
+    <img src="/images/material/枝２.png" alt="" class="nd-right-hide" style="position:absolute; top:40%; right:-50px; width:360px; height:auto; transform:scaleX(-1); opacity:0.55;" />
   </div>
 
   <!-- 葉っみ（Grizzly ブランドのみ） -->
@@ -218,7 +218,8 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
         '/images/material/歯車３.png',
       ];
 
-      const configs = [
+      const isPC = window.innerWidth > 640;
+      const configs = isPC ? [
         { left: '5%',  top: '8%',  size: 130, imgIdx: 0, dir: 1  },
         { left: '78%', top: '3%',  size: 100, imgIdx: 1, dir: -1 },
         { left: '88%', top: '22%', size: 160, imgIdx: 2, dir: 1  },
@@ -228,6 +229,12 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
         { left: '55%', top: '70%', size: 120, imgIdx: 1, dir: 1  },
         { left: '82%', top: '78%', size: 100, imgIdx: 0, dir: -1 },
         { left: '30%', top: '88%', size: 150, imgIdx: 2, dir: 1  },
+      ] : [
+        { left: '5%',  top: '8%',  size: 130, imgIdx: 0, dir: 1  },
+        { left: '2%',  top: '35%', size: 110, imgIdx: 1, dir: -1 },
+        { left: '65%', top: '20%', size: 100, imgIdx: 2, dir: 1  },
+        { left: '15%', top: '62%', size: 90,  imgIdx: 2, dir: -1 },
+        { left: '55%', top: '72%', size: 120, imgIdx: 1, dir: 1  },
       ];
 
       configs.forEach((cfg, i) => {
@@ -682,6 +689,14 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
     #falling-leaves .fl-leaf:nth-child(10) { left: 25%; top:-55px; width:16px; height:10px; background:#6b4a1a; animation: leafFall  9s linear infinite, leafSway2 3s   ease-in-out infinite alternate; animation-delay: 15s; }
     #falling-leaves .fl-leaf:nth-child(11) { left: 50%; top:-70px; width:20px; height:13px; background:#3d5a1a; animation: leafFall 11s linear infinite, leafSway1 2.5s ease-in-out infinite alternate; animation-delay: 6s; }
     #falling-leaves .fl-leaf:nth-child(12) { left: 90%; top:-60px; width:16px; height:10px; background:#5a3a1a; animation: leafFall 15s linear infinite, leafSway2 4s   ease-in-out infinite alternate; animation-delay: 4s; }
+    /* スマホ：木・枝を小さく、右側要素を非表示 */
+    @media (max-width: 640px) {
+      #logoWrapper { position: relative; z-index: 10; }
+      .nd-right-hide { display: none !important; }
+      .nd-tree-left   { width: 220px !important; left: -40px !important; }
+      .nd-branch-left1 { width: 180px !important; left: -60px !important; }
+      .nd-branch-left2 { width: 160px !important; left: -20px !important; }
+    }
     @keyframes twinkle {
       0% {
         opacity: 1;
