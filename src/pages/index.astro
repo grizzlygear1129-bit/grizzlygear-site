@@ -73,6 +73,38 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
   <!-- 歯車（Grizzly ブランドのみ） -->
   <div id="gears" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden;"></div>
 
+  <!-- 木・枝（Grizzly ブランドのみ） -->
+  <div id="nature-deco" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 3; overflow: hidden;">
+    <!-- 木：左下（見切れ） -->
+    <img src="/images/material/木.png" alt="" style="position:absolute; bottom:0; left:-100px; width:520px; height:auto; object-fit:contain; object-position:bottom left; opacity:0.55;" />
+    <!-- 木：右下（見切れ） -->
+    <img src="/images/material/木.png" alt="" style="position:absolute; bottom:0; right:-100px; width:520px; height:auto; object-fit:contain; object-position:bottom right; opacity:0.55;" />
+    <!-- 枝１：左上（大きく見切れ） -->
+    <img src="/images/material/枝１.png" alt="" style="position:absolute; top:5%; left:-180px; width:400px; height:auto; opacity:0.55;" />
+    <!-- 枝２：左中（見切れ） -->
+    <img src="/images/material/枝２.png" alt="" style="position:absolute; top:42%; left:-30px; width:360px; height:auto; opacity:0.55;" />
+    <!-- 枝１：右中上（左右反転・大きく見切れ） -->
+    <img src="/images/material/枝１.png" alt="" style="position:absolute; top:10%; right:-130px; width:400px; height:auto; transform:scaleX(-1); opacity:0.55;" />
+    <!-- 枝２：右中下（左右反転・見切れ） -->
+    <img src="/images/material/枝２.png" alt="" style="position:absolute; top:40%; right:-50px; width:360px; height:auto; transform:scaleX(-1); opacity:0.55;" />
+  </div>
+
+  <!-- 葉っみ（Grizzly ブランドのみ） -->
+  <ul id="falling-leaves" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:4; margin:0; padding:0; list-style:none;">
+    <li class="fl-leaf"></li>
+    <li class="fl-leaf"></li>
+    <li class="fl-leaf"></li>
+    <li class="fl-leaf"></li>
+    <li class="fl-leaf"></li>
+    <li class="fl-leaf"></li>
+    <li class="fl-leaf"></li>
+    <li class="fl-leaf"></li>
+    <li class="fl-leaf"></li>
+    <li class="fl-leaf"></li>
+    <li class="fl-leaf"></li>
+    <li class="fl-leaf"></li>
+  </ul>
+
   <!-- 商品一覧 -->
   <div class="max-w-7xl mx-auto px-6 my-12" style="position: relative; z-index: 10;">
     <h2 class="text-2xl font-bold mb-6">商品一覧</h2>
@@ -181,9 +213,9 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
       gearsEl.innerHTML = '';
 
       const gearImages = [
-        '/images/歯車１.png',
-        '/images/歯車２.png',
-        '/images/歯車３.png',
+        '/images/material/歯車１.png',
+        '/images/material/歯車２.png',
+        '/images/material/歯車３.png',
       ];
 
       const configs = [
@@ -207,7 +239,7 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
         wrapper.style.top = cfg.top;
         wrapper.style.width = cfg.size + 'px';
         wrapper.style.height = cfg.size + 'px';
-        wrapper.style.opacity = '0.18';
+        wrapper.style.opacity = '0.28';
         wrapper.style.transform = 'rotate(0deg)';
         wrapper.style.willChange = 'transform';
 
@@ -389,6 +421,14 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
           gears.style.display = 'block';
           createGears();
         }
+
+        // 木・枝を表示
+        const natureDeco = document.getElementById('nature-deco');
+        if (natureDeco) natureDeco.style.display = 'block';
+
+        // 葉っみを表示
+        const fallingLeaves = document.getElementById('falling-leaves');
+        if (fallingLeaves) fallingLeaves.style.display = 'block';
         
         grizzlyBtn.style.backgroundColor = 'rgba(180, 180, 180, 0.1)';
         grizzlyBtn.style.color = '#000000';
@@ -485,6 +525,14 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
           gears.style.display = 'none';
           gears.innerHTML = '';
         }
+
+        // 木・枝を非表示
+        const natureDeco = document.getElementById('nature-deco');
+        if (natureDeco) natureDeco.style.display = 'none';
+
+        // 葉っみを非表示
+        const fallingLeaves = document.getElementById('falling-leaves');
+        if (fallingLeaves) fallingLeaves.style.display = 'none';
         
         sleepBtn.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
         sleepBtn.style.backgroundImage = 'none';
@@ -604,6 +652,36 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
       0%   { transform: translateX(0); }
       100% { transform: translateX(calc(100vw + 400px)); }
     }
+    @keyframes leafFall {
+      to { top: 110%; }
+    }
+    @keyframes leafSway1 {
+      from { transform: translateX(0px)   rotate(0deg); }
+      to   { transform: translateX(180px) rotate(-40deg); }
+    }
+    @keyframes leafSway2 {
+      from { transform: translateX(180px) rotate(-40deg); }
+      to   { transform: translateX(0px)   rotate(0deg); }
+    }
+    #falling-leaves .fl-leaf {
+      position: absolute;
+      list-style: none;
+      top: -50px;
+      border-radius: 0% 70%;
+      opacity: 0.75;
+    }
+    #falling-leaves .fl-leaf:nth-child(1)  { left:  3%; top:-60px; width:22px; height:14px; background:#5a3a1a; animation: leafFall 11s linear infinite, leafSway1 3s   ease-in-out infinite alternate; animation-delay: 0s; }
+    #falling-leaves .fl-leaf:nth-child(2)  { left: 10%; top:-80px; width:14px; height:9px;  background:#3d5a1a; animation: leafFall 16s linear infinite, leafSway2 2.5s ease-in-out infinite alternate; animation-delay: 5s; }
+    #falling-leaves .fl-leaf:nth-child(3)  { left: 20%; top:-55px; width:18px; height:11px; background:#7a3d1a; animation: leafFall 10s linear infinite, leafSway1 3.5s ease-in-out infinite alternate; animation-delay: 12s; }
+    #falling-leaves .fl-leaf:nth-child(4)  { left: 33%; top:-70px; width:16px; height:10px; background:#4a5a1a; animation: leafFall  9s linear infinite, leafSway2 4s   ease-in-out infinite alternate; animation-delay: 3s; }
+    #falling-leaves .fl-leaf:nth-child(5)  { left: 45%; top:-60px; width:20px; height:13px; background:#6b3a1a; animation: leafFall 12s linear infinite, leafSway1 3.5s ease-in-out infinite alternate; animation-delay: 8s; }
+    #falling-leaves .fl-leaf:nth-child(6)  { left: 57%; top:-50px; width:14px; height:9px;  background:#3d4a1a; animation: leafFall 13s linear infinite, leafSway2 3s   ease-in-out infinite alternate; animation-delay: 2s; }
+    #falling-leaves .fl-leaf:nth-child(7)  { left: 67%; top:-45px; width:18px; height:11px; background:#5a3a1a; animation: leafFall  8s linear infinite, leafSway1 2.5s ease-in-out infinite alternate; animation-delay: 7s; }
+    #falling-leaves .fl-leaf:nth-child(8)  { left: 75%; top:-65px; width:22px; height:14px; background:#7a4a1a; animation: leafFall 10s linear infinite, leafSway2 3.5s ease-in-out infinite alternate; animation-delay: 1s; }
+    #falling-leaves .fl-leaf:nth-child(9)  { left: 83%; top:-75px; width:14px; height:9px;  background:#4a5a1a; animation: leafFall 14s linear infinite, leafSway1 4s   ease-in-out infinite alternate; animation-delay: 10s; }
+    #falling-leaves .fl-leaf:nth-child(10) { left: 25%; top:-55px; width:16px; height:10px; background:#6b4a1a; animation: leafFall  9s linear infinite, leafSway2 3s   ease-in-out infinite alternate; animation-delay: 15s; }
+    #falling-leaves .fl-leaf:nth-child(11) { left: 50%; top:-70px; width:20px; height:13px; background:#3d5a1a; animation: leafFall 11s linear infinite, leafSway1 2.5s ease-in-out infinite alternate; animation-delay: 6s; }
+    #falling-leaves .fl-leaf:nth-child(12) { left: 90%; top:-60px; width:16px; height:10px; background:#5a3a1a; animation: leafFall 15s linear infinite, leafSway2 4s   ease-in-out infinite alternate; animation-delay: 4s; }
     @keyframes twinkle {
       0% {
         opacity: 1;
