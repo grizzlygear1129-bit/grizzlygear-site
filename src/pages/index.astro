@@ -70,6 +70,9 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
   <!-- 雲（Sleep ブランドのみ） -->
   <div id="clouds" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; overflow: hidden;"></div>
 
+  <!-- 歯車（Grizzly ブランドのみ） -->
+  <div id="gears" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden;"></div>
+
   <!-- 商品一覧 -->
   <div class="max-w-7xl mx-auto px-6 my-12" style="position: relative; z-index: 10;">
     <h2 class="text-2xl font-bold mb-6">商品一覧</h2>
@@ -171,6 +174,71 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
   </div>
 
   <script define:vars={{ allProducts: products }}>
+    // 歯車エフェクト生成関数
+    function createGears() {
+      const gearsEl = document.getElementById('gears');
+      if (!gearsEl) return;
+      gearsEl.innerHTML = '';
+
+      const gearImages = [
+        '/images/歯車１.png',
+        '/images/歯車２.png',
+        '/images/歯車３.png',
+      ];
+
+      const configs = [
+        { left: '5%',  top: '8%',  size: 130, imgIdx: 0, dir: 1  },
+        { left: '78%', top: '3%',  size: 100, imgIdx: 1, dir: -1 },
+        { left: '88%', top: '22%', size: 160, imgIdx: 2, dir: 1  },
+        { left: '2%',  top: '35%', size: 110, imgIdx: 1, dir: -1 },
+        { left: '70%', top: '48%', size: 140, imgIdx: 0, dir: 1  },
+        { left: '15%', top: '60%', size: 90,  imgIdx: 2, dir: -1 },
+        { left: '55%', top: '70%', size: 120, imgIdx: 1, dir: 1  },
+        { left: '82%', top: '78%', size: 100, imgIdx: 0, dir: -1 },
+        { left: '30%', top: '88%', size: 150, imgIdx: 2, dir: 1  },
+      ];
+
+      configs.forEach((cfg, i) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'gear-item';
+        wrapper.dataset.dir = cfg.dir;
+        wrapper.style.position = 'absolute';
+        wrapper.style.left = cfg.left;
+        wrapper.style.top = cfg.top;
+        wrapper.style.width = cfg.size + 'px';
+        wrapper.style.height = cfg.size + 'px';
+        wrapper.style.opacity = '0.18';
+        wrapper.style.transform = 'rotate(0deg)';
+        wrapper.style.willChange = 'transform';
+
+        const img = document.createElement('img');
+        img.src = gearImages[cfg.imgIdx];
+        img.style.width = '100%';
+        img.style.height = '100%';
+        img.style.objectFit = 'contain';
+        img.draggable = false;
+
+        wrapper.appendChild(img);
+        gearsEl.appendChild(wrapper);
+      });
+    }
+
+    // スクロールで歯車を回転
+    let gearScrollAngle = 0;
+    let lastScrollY = 0;
+    function onGearScroll() {
+      const gearsEl = document.getElementById('gears');
+      if (!gearsEl || gearsEl.style.display === 'none') return;
+      const delta = window.scrollY - lastScrollY;
+      lastScrollY = window.scrollY;
+      gearScrollAngle += delta * 0.3;
+      gearsEl.querySelectorAll('.gear-item').forEach(el => {
+        const dir = Number(el.dataset.dir);
+        el.style.transform = `rotate(${gearScrollAngle * dir}deg)`;
+      });
+    }
+    window.addEventListener('scroll', onGearScroll, { passive: true });
+
     // 星空エフェクト生成関数
     function createStars(count = 1000) {
       const starSky = document.getElementById('starry_sky');
@@ -314,6 +382,13 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
           clouds.style.display = 'none';
           clouds.innerHTML = '';
         }
+
+        // 歯車を表示
+        const gears = document.getElementById('gears');
+        if (gears) {
+          gears.style.display = 'block';
+          createGears();
+        }
         
         grizzlyBtn.style.backgroundColor = 'rgba(180, 180, 180, 0.1)';
         grizzlyBtn.style.color = '#000000';
@@ -402,6 +477,13 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
         if (clouds) {
           clouds.style.display = 'block';
           createClouds();
+        }
+
+        // 歯車を非表示
+        const gears = document.getElementById('gears');
+        if (gears) {
+          gears.style.display = 'none';
+          gears.innerHTML = '';
         }
         
         sleepBtn.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
