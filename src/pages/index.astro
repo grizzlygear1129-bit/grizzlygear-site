@@ -34,6 +34,10 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
     <div class="space-y-4">
       {news
         .filter(item => !item.hideFlag)
+        .sort((a, b) => {
+          const p = (d: string) => new Date(d.replace(/（\d+）年（\d+）月（\d+）日/, '$1/$2/$3').replace(/年/, '/').replace(/月/, '/').replace(/日/, ''));
+          return p(b.date).getTime() - p(a.date).getTime();
+        })
         .map(item => (
           <News
             title={item.title}
@@ -76,17 +80,17 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
   <!-- 木・枝（Grizzly ブランドのみ） -->
   <div id="nature-deco" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 3; overflow: hidden;">
     <!-- 木：左下（見切れ） -->
-    <img src="/images/material/木.png" alt="" class="nd-tree-left" style="position:absolute; bottom:0; left:-100px; width:520px; height:auto; object-fit:contain; object-position:bottom left; opacity:0.55;" />
+    <img src="/images/material/木.png" alt="" class="nd-tree-left" style="position:absolute; bottom:0; left:-100px; width:520px; height:auto; object-fit:contain; object-position:bottom left; opacity:0.25;" />
     <!-- 木：右下（見切れ）スマホ非表示 -->
-    <img src="/images/material/木.png" alt="" class="nd-right-hide" style="position:absolute; bottom:0; right:-100px; width:520px; height:auto; object-fit:contain; object-position:bottom right; opacity:0.55;" />
+    <img src="/images/material/木.png" alt="" class="nd-right-hide" style="position:absolute; bottom:0; right:-100px; width:520px; height:auto; object-fit:contain; object-position:bottom right; opacity:0.25;" />
     <!-- 枝１：左上（大きく見切れ） -->
-    <img src="/images/material/枝１.png" alt="" class="nd-branch-left1" style="position:absolute; top:5%; left:-180px; width:400px; height:auto; opacity:0.55;" />
+    <img src="/images/material/枝１.png" alt="" class="nd-branch-left1" style="position:absolute; top:5%; left:-180px; width:400px; height:auto; opacity:0.25;" />
     <!-- 枝２：左中（見切れ） -->
-    <img src="/images/material/枝２.png" alt="" class="nd-branch-left2" style="position:absolute; top:42%; left:-30px; width:360px; height:auto; opacity:0.55;" />
+    <img src="/images/material/枝２.png" alt="" class="nd-branch-left2" style="position:absolute; top:42%; left:-30px; width:360px; height:auto; opacity:0.25;" />
     <!-- 枝１：右中上（左右反転・大きく見切れ）スマホ非表示 -->
-    <img src="/images/material/枝１.png" alt="" class="nd-right-hide" style="position:absolute; top:10%; right:-130px; width:400px; height:auto; transform:scaleX(-1); opacity:0.55;" />
+    <img src="/images/material/枝１.png" alt="" class="nd-right-hide" style="position:absolute; top:10%; right:-130px; width:400px; height:auto; transform:scaleX(-1); opacity:0.25;" />
     <!-- 枝２：右中下（左右反転・見切れ）スマホ非表示 -->
-    <img src="/images/material/枝２.png" alt="" class="nd-right-hide" style="position:absolute; top:40%; right:-50px; width:360px; height:auto; transform:scaleX(-1); opacity:0.55;" />
+    <img src="/images/material/枝２.png" alt="" class="nd-right-hide" style="position:absolute; top:40%; right:-50px; width:360px; height:auto; transform:scaleX(-1); opacity:0.25;" />
   </div>
 
   <!-- 葉っみ（Grizzly ブランドのみ） -->
@@ -148,7 +152,7 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
 
   <!-- 注意事項 -->
   <div class="max-w-4xl mx-auto px-6 my-12">
-    <div class="bg-base-200 rounded-lg">
+    <div class="rounded-lg" style="background: rgba(120, 120, 120, 0.15); backdrop-filter: blur(6px);">
       <button 
         id="toggleNotice" 
         class="w-full px-4 py-3 flex justify-between items-center border-b border-base-300"
@@ -191,7 +195,7 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
             </li>
             <li class="flex items-start">
               <span class="text-warning mr-2 text-base">※</span>
-              <span>ハンドメイド製品のため、商品ごとに若干のサイズの違いや、装飾に使用するパーツ（歯車など）の配置や形状に個体差が生じる場合がございます。これらの個体差は手作りならではの特徴としてご理解ください。</span>
+              <span>ハンドメイド製品のため、商品ごとに若干のサイズの違いや、留め具、装飾に使用するパーツの配置や形状に個体差が生じる場合がございます。これらの個体差は手作りならではの特徴としてご理解ください。</span>
             </li>
             <li class="flex items-start">
               <span class="text-warning mr-2 text-base">※</span>
@@ -246,7 +250,7 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
         wrapper.style.top = cfg.top;
         wrapper.style.width = cfg.size + 'px';
         wrapper.style.height = cfg.size + 'px';
-        wrapper.style.opacity = '0.28';
+        wrapper.style.opacity = '0.15';
         wrapper.style.transform = 'rotate(0deg)';
         wrapper.style.willChange = 'transform';
 
@@ -484,10 +488,20 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
         document.querySelectorAll('.text-gray-500').forEach(el => {
           el.style.color = '';
         });
-        // 注意事項の内容を元の色に戻す
-        document.querySelectorAll('#noticeContent .text-gray-600').forEach(el => {
+        // 新着情報の概要文を元の色に戻す
+        document.querySelectorAll('.text-gray-700').forEach(el => {
           el.style.color = '';
         });
+        // 注意事項の内容を黒にする
+        document.querySelectorAll('#noticeContent .text-gray-600').forEach(el => {
+          el.style.color = '#000000';
+        });
+        // 注意事項の背景を半透明グレーに
+        const noticeBoxGrizzly = document.querySelector('#toggleNotice')?.closest('.rounded-lg');
+        if (noticeBoxGrizzly) {
+          noticeBoxGrizzly.style.background = 'rgba(120, 120, 120, 0.15)';
+          noticeBoxGrizzly.style.backdropFilter = 'blur(6px)';
+        }
         // ブランド紹介の文字色を黒に戻す
         const brandIntro = document.getElementById('brandIntro');
         if (brandIntro) {
@@ -596,10 +610,20 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
         document.querySelectorAll('.text-gray-500').forEach(el => {
           el.style.color = '#ffffff';
         });
+        // 新着情報の概要文を白くする
+        document.querySelectorAll('.text-gray-700').forEach(el => {
+          el.style.color = '#ffffff';
+        });
         // 注意事項の内容を白くする
         document.querySelectorAll('#noticeContent .text-gray-600').forEach(el => {
           el.style.color = '#ffffff';
         });
+        // 注意事項の背景を30%白に
+        const noticeBoxSleep = document.querySelector('#toggleNotice')?.closest('.rounded-lg');
+        if (noticeBoxSleep) {
+          noticeBoxSleep.style.background = 'rgba(255, 255, 255, 0.30)';
+          noticeBoxSleep.style.backdropFilter = 'blur(6px)';
+        }
         // ブランド紹介の文字色を白に
         const brandIntro = document.getElementById('brandIntro');
         if (brandIntro) {
@@ -675,7 +699,7 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
       list-style: none;
       top: -50px;
       border-radius: 0% 70%;
-      opacity: 0.75;
+      opacity: 0.35;
     }
     #falling-leaves .fl-leaf:nth-child(1)  { left:  3%; top:-60px; width:22px; height:14px; background:#5a3a1a; animation: leafFall 11s linear infinite, leafSway1 3s   ease-in-out infinite alternate; animation-delay: 0s; }
     #falling-leaves .fl-leaf:nth-child(2)  { left: 10%; top:-80px; width:14px; height:9px;  background:#3d5a1a; animation: leafFall 16s linear infinite, leafSway2 2.5s ease-in-out infinite alternate; animation-delay: 5s; }
