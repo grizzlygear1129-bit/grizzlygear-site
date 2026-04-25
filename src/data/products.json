@@ -451,5 +451,37 @@
         "link": "https://mercari-link/mini-blue"
       }
     ]
+  },
+  {
+    "id": 12,
+    "brand": "sleep",
+    "name": "Luna Key",
+    "newFlag": 0,
+    "hideFlag": 0,
+    "shortDescription": "鍵をスマートに収納できるキーケースです。",
+    "longDescription": "鍵をスマートに収納できるキーケースです。\n鍵を引っ張り出し、紐を引っ張ることで、簡単に出し入れができます。",
+    "capacity": {
+      "keys": "2"
+    },
+    "dimensions": {
+      "height": "約10.5cm",
+      "width": "約4.5cm",
+      "depth": "約1.3cm"
+    },
+    "mainImage": "/images/Luna-Key/main.jpg",
+    "slides": [
+      "/images/Luna-Key/slide1.jpg",
+      "/images/Luna-Key/slide2.jpg",
+      "/images/Luna-Key/slide3.jpg",
+      "/images/Luna-Key/slide4.jpg"
+    ],
+    "colors": [
+      {
+        "name": "ブルー",
+        "image": "/images/Luna-Key/color-ブルー.jpg",
+        "description": "コンパクトなキーケースです。",
+        "link": "https://test"
+      }
+    ]
   }
 ]
