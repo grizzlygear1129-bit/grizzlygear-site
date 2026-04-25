@@ -16,7 +16,7 @@
 1. 依存パッケージをインストール（プロジェクトルートで実行）:
 
 ```bash
-npm install
+# npm install
 # または必要なら dev に sharp を追加
 npm install -D sharp
 ```
@@ -24,17 +24,18 @@ npm install -D sharp
 2. dry-run（実際には書き換えないで候補確認）:
 
 ```bash
-node scripts/resize-images.js public/images --dry-run
+node scripts/resize-images.js --dry-run
 ```
 
 3. 実行例（上書き実行）:
 
 ```bash
-node scripts/resize-images.js public/images --max-width=1600 --quality=75 --concurrency=4
+node scripts/resize-images.js --max-width=1600 --quality=75 --concurrency=4
 ```
 
 4. オプション:
-- `--backup` : 上書き時に元ファイルの `.bak` を残します。
+- `--dry-run`: 実ファイルは変更しません。
+- `--concurrency=N`: 並列ワーカー数（デフォルト 4）。
 - `--dry-run`: 実ファイルは変更しません。
 - `--concurrency=N`: 並列ワーカー数（デフォルト 4）。
 
@@ -43,7 +44,6 @@ node scripts/resize-images.js public/images --max-width=1600 --quality=75 --conc
 - まずは `--dry-run` → 小さなフォルダで確認 → 本運用 の順で実行してください。
 
 次のステップ提案
-- 必要であれば自動でバックアップを作る別オプションや、ログ出力を CSV にする変更を行えます。
 
 ファイル
 - `scripts/resize-images.js`: 実行スクリプト

@@ -9,37 +9,36 @@ const SUPPORTED_EXTS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.avif', '.tif
 
 function printHelp() {
   console.log(`
-Usage: node scripts/resize-images.js <target-dir> [options]
+Usage: node scripts/resize-images.js [options]
+
+Notes:
+  This tool ONLY processes images placed under the 'scripts/resize-img' folder
+  in the project root. The target directory is fixed and cannot be changed.
 
 Options:
-  --dir=PATH           Target directory (positional arg allowed)
   --max-width=NUM      Max width in pixels (default: 1600)
   --quality=NUM        Quality for lossy formats (default: 75)
   --concurrency=NUM    Parallel workers (default: 4)
   --dry-run            Do not write, just report
-  --backup             Keep a `.bak` copy when a file is replaced
   --help               Show this help
 `);
 }
 
 function parseArgs() {
   const args = process.argv.slice(2);
-  const opts = { dir: null, maxWidth: 1600, quality: 75, concurrency: 4, dryRun: false, backup: false };
+  const opts = { maxWidth: 1600, quality: 75, concurrency: 4, dryRun: false };
 
   for (const arg of args) {
     if (arg === '--dry-run') opts.dryRun = true;
-    else if (arg === '--backup') opts.backup = true;
-    else if (arg.startsWith('--dir=')) opts.dir = arg.split('=')[1];
     else if (arg.startsWith('--max-width=')) opts.maxWidth = Number(arg.split('=')[1]) || opts.maxWidth;
     else if (arg.startsWith('--quality=')) opts.quality = Number(arg.split('=')[1]) || opts.quality;
     else if (arg.startsWith('--concurrency=')) opts.concurrency = Math.max(1, Number(arg.split('=')[1]) || opts.concurrency);
     else if (arg === '--help' || arg === '-h') { printHelp(); process.exit(0); }
-    else if (!opts.dir) opts.dir = arg;
     else console.warn('Unknown arg:', arg);
   }
 
-  if (!opts.dir) { printHelp(); process.exit(1); }
-  opts.dir = path.resolve(process.cwd(), opts.dir);
+  // Force target to scripts/resize-img inside project root
+  opts.dir = path.resolve(process.cwd(), 'scripts', 'resize-img');
   return opts;
 }
 
@@ -111,9 +110,6 @@ async function processFile(file, opts) {
     const newSize = newStat.size;
 
     if (newSize < origSize) {
-      if (opts.backup) {
-        await fs.copyFile(file, file + '.bak');
-      }
       await fs.rename(tmpPath, file);
       return { processed: true, path: file, origSize, newSize };
     } else {
