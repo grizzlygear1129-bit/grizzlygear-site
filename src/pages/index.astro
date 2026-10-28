@@ -2,12 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import News from '../components/News.astro';
+import WolfWear from '../components/WolfWear.astro';
 import products from '../data/products.json';
 import news from '../data/news.json';
 
 // ブランド別に商品を分類
 const grizzlyProducts = products.filter(p => p.brand === 'grizzly' && !p.hideFlag);
 const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
+const wolfProducts = products.filter(p => p.brand === 'wolf' && !p.hideFlag);
 ---
 
 <Layout>
@@ -29,7 +31,7 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
   </div>
 
   <!-- 新着情報 -->
-  <div class="max-w-4xl mx-auto px-6 my-12">
+  <div id="standardNews" class="max-w-4xl mx-auto px-6 my-12">
     <h2 class="text-2xl font-bold mb-6">新着情報</h2>
     <div class="space-y-4">
       {news
@@ -53,17 +55,22 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
   <div class="max-w-4xl mx-auto px-6 my-12 text-center">
     <!-- 表示を変えるボタン -->
     <div class="text-center my-8 flex justify-center">
-      <button id="brandBtn-grizzly" class="flex items-center justify-center bg-white bg-opacity-20 text-black px-8 py-4 rounded-l-3xl border-2 border-black hover:bg-opacity-30 transition-all cursor-pointer" type="button">
+      <button id="brandBtn-grizzly" class="flex h-[68px] w-36 shrink-0 items-center justify-center bg-white bg-opacity-20 text-black px-8 py-4 rounded-l-3xl border-2 border-black hover:bg-opacity-30 transition-all cursor-pointer" type="button">
         <img src="/images/GG_logo.png" alt="GRIZZLY GEAR" class="h-8" />
       </button>
-      <button id="brandBtn-sleep" class="flex items-center justify-center bg-white bg-opacity-20 text-black px-8 py-4 rounded-r-3xl border-2 border-black hover:bg-opacity-30 transition-all cursor-pointer" type="button">
+      <button id="brandBtn-sleep" class="flex h-[68px] w-36 shrink-0 items-center justify-center bg-white bg-opacity-20 text-black px-8 py-4 border-2 border-black hover:bg-opacity-30 transition-all cursor-pointer" type="button">
         <img src="/images/SS_logo.png" alt="SEEP SLEEP" class="h-8" />
+      </button>
+      <button id="brandBtn-wolf" data-product-brand-id="wolf" data-product-brand-name="WOLF WEAR" class="flex h-[68px] w-36 shrink-0 items-center justify-center rounded-r-3xl border-2 border-black bg-black px-8 py-4 transition-colors cursor-pointer" type="button" aria-label="WOLF WEARを表示">
+        <img src="/images/WW_W_logo.png.png" alt="WOLF WEAR" class="h-8 w-auto" />
       </button>
     </div>
     <!-- ライン紹介 -->
     <p id="brandDescription" class="text-gray-600 leading-relaxed">
     </p>
   </div>
+
+  <WolfWear />
 
   <!-- 星空エフェクト（Sleep ブランドのみ） -->
   <div id="starry_sky" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5;"></div>
@@ -110,8 +117,8 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
   </ul>
 
   <!-- 商品一覧 -->
-  <div class="max-w-7xl mx-auto px-6 my-12" style="position: relative; z-index: 10;">
-    <h2 class="text-2xl font-bold mb-6">商品一覧</h2>
+  <div id="productSection" class="max-w-7xl mx-auto px-6 my-12" style="position: relative; z-index: 10;">
+    <h2 id="productTitle" class="text-2xl font-bold mb-6">商品一覧</h2>
     <div id="productContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {products
         .filter(product => !product.hideFlag)
@@ -132,6 +139,7 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
           </div>
         ))}
     </div>
+    {wolfProducts.length === 0 && <p id="wolfWearEmptyState" style="display: none;">WOLF WEARの商品は準備中です。</p>}
   </div>
 
   <!-- SNS / 外部サービスへのリンク -->
@@ -151,7 +159,7 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
   </div>
 
   <!-- 注意事項 -->
-  <div class="max-w-4xl mx-auto px-6 my-12">
+  <div id="noticeSection" class="max-w-4xl mx-auto px-6 my-12">
     <div class="rounded-lg" style="background: rgba(120, 120, 120, 0.15); backdrop-filter: blur(6px);">
       <button 
         id="toggleNotice" 
@@ -669,6 +677,23 @@ const sleepProducts = products.filter(p => p.brand === 'sleep' && !p.hideFlag);
   </script>
 
   <style>
+    @media (max-width: 480px) {
+      #brandBtn-grizzly,
+      #brandBtn-sleep,
+      #brandBtn-wolf {
+        width: 33.333%;
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+      }
+
+      #brandBtn-grizzly img,
+      #brandBtn-sleep img,
+      #brandBtn-wolf img {
+        max-width: 100%;
+        object-fit: contain;
+      }
+    }
+
     /* 星空エフェクトのスタイル */
     .moon-element {
       width: 200px;

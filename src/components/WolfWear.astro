@@ -1,0 +1,530 @@
+<div id="wolfWearScene" aria-hidden="true">
+  <div class="wolf-moon-wrap">
+    <svg class="wolf-moon" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="44" fill="#FFF9E8" />
+    </svg>
+    <div class="wolf-moon-cloud">
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <div class="wolf-cloud wolf-cloud-one"></div>
+  <div class="wolf-cloud wolf-cloud-two"></div>
+  <div class="wolf-stars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="wolf-distant-town">
+    {Array.from({ length: 19 }, (_, index) => (
+      <span style={`--town-building: ${18 + ((index * 17) % 42)}%; --town-width: ${5 + ((index * 7) % 6)}%;`}></span>
+    ))}
+  </div>
+  <div class="wolf-city-side wolf-city-left">
+    <div class="wolf-building wolf-building-back"><div class="wolf-building-windows">{Array.from({ length: 48 }, (_, index) => <i data-light-index={index}></i>)}</div></div>
+    <div class="wolf-building wolf-building-front"><div class="wolf-building-windows">{Array.from({ length: 48 }, (_, index) => <i data-light-index={index + 48}></i>)}</div></div>
+  </div>
+  <div class="wolf-city-side wolf-city-right">
+    <div class="wolf-building wolf-building-back"><div class="wolf-building-windows">{Array.from({ length: 48 }, (_, index) => <i data-light-index={index + 96}></i>)}</div></div>
+    <div class="wolf-building wolf-building-front"><div class="wolf-building-windows">{Array.from({ length: 48 }, (_, index) => <i data-light-index={index + 144}></i>)}</div></div>
+  </div>
+  <img class="wolf-rooftop-wolf" src="/images/wolf-howling.png" alt="" />
+</div>
+
+<style>
+  :global(body.wolf-wear-mode) {
+    position: relative;
+    isolation: isolate;
+    min-height: 200vh;
+    color: #f2f2ed !important;
+    background:
+      radial-gradient(ellipse at 50% 58%, rgba(32, 54, 75, 0.38), transparent 48%),
+      linear-gradient(180deg, #07111c 0%, #0c1a29 52%, #152638 100%) !important;
+    background-attachment: fixed !important;
+  }
+
+  :global(body.wolf-wear-mode #starry_sky),
+  :global(body.wolf-wear-mode #moon),
+  :global(body.wolf-wear-mode #clouds),
+  :global(body.wolf-wear-mode #gears),
+  :global(body.wolf-wear-mode #nature-deco),
+  :global(body.wolf-wear-mode #falling-leaves) {
+    display: none !important;
+  }
+
+  :global(body.wolf-wear-mode #productContainer .product-card-wrapper:not(.brand-wolf)) {
+    display: none !important;
+  }
+
+  :global(body.wolf-wear-mode #productContainer .product-card-wrapper.brand-wolf) {
+    display: block !important;
+  }
+
+  :global(body.wolf-wear-mode #wolfWearEmptyState) {
+    display: block !important;
+    color: #f2f2ed;
+    text-align: center;
+  }
+
+  :global(body.wolf-wear-mode #minneLink) {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    padding: 8px !important;
+    border-radius: 8px !important;
+  }
+
+  :global(body.wolf-wear-mode #brandIntro),
+  :global(body.wolf-wear-mode #brandDescription) {
+    color: #ffffff !important;
+  }
+
+  :global(body.wolf-wear-mode #standardNews) {
+    overflow: hidden;
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  :global(body.wolf-wear-mode #standardNews > h2) {
+    margin: 0;
+    padding: 1.25rem 1.5rem 0.75rem;
+    color: #ffffff !important;
+  }
+
+  :global(body.wolf-wear-mode #standardNews > div) {
+    margin: 0;
+    padding: 0 1.5rem 0.75rem;
+  }
+
+  :global(body.wolf-wear-mode #standardNews .card) {
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    background: transparent !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  :global(body.wolf-wear-mode #standardNews .card:last-child) {
+    border-bottom: 0;
+  }
+
+  :global(body.wolf-wear-mode #standardNews .card .card-title),
+  :global(body.wolf-wear-mode #standardNews .card .text-gray-700),
+  :global(body.wolf-wear-mode #standardNews .card .text-gray-500) {
+    color: #ffffff !important;
+  }
+
+  :global(body.wolf-wear-mode #externalLinks),
+  :global(body.wolf-wear-mode #noticeSection) {
+    color: #f2f0e9;
+  }
+
+  :global(body.wolf-wear-mode #instagramLogo) {
+    filter: brightness(0) invert(1);
+  }
+
+  :global(body.wolf-wear-mode #noticeSection > div) {
+    background: rgba(255, 255, 255, 0.14) !important;
+  }
+
+  :global(body.wolf-wear-mode #noticeContent .text-gray-600) {
+    color: #f2f0e9 !important;
+  }
+
+  :global(body.wolf-wear-mode #brandBtn-grizzly),
+  :global(body.wolf-wear-mode #brandBtn-sleep),
+  :global(body.wolf-wear-mode #brandBtn-wolf) {
+    border-color: #ffffff !important;
+    border-radius: 0;
+  }
+
+  :global(body.wolf-wear-mode #brandBtn-grizzly) {
+    background: #ffffff !important;
+  }
+
+  :global(body.wolf-wear-mode #brandBtn-sleep) {
+    background: linear-gradient(0deg, rgba(204, 174, 159, 0.7) 0%, rgba(40, 48, 93, 0.7) 40%, rgba(5, 8, 71, 0.7) 80%, rgba(41, 82, 174, 0.7) 100%) !important;
+  }
+
+  :global(body.wolf-wear-mode #brandBtn-wolf) {
+    background: #000000 !important;
+  }
+
+  :global(body.wolf-wear-mode #brandBtn-grizzly) {
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+  }
+
+  :global(body.wolf-wear-mode #brandBtn-wolf) {
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+  }
+
+  :global(body.wolf-wear-mode #brandBtn-grizzly) {
+    background-color: #ffffff !important;
+    background-image: none !important;
+  }
+
+  :global(body.wolf-wear-mode #brandBtn-sleep) {
+    background-color: transparent !important;
+    background-image: linear-gradient(0deg, rgba(204, 174, 159, 0.7) 0%, rgba(40, 48, 93, 0.7) 40%, rgba(5, 8, 71, 0.7) 80%, rgba(41, 82, 174, 0.7) 100%) !important;
+  }
+
+  :global(body.wolf-wear-mode #brandBtn-wolf) {
+    background-color: #000000 !important;
+    background-image: none !important;
+  }
+
+  #wolfWearScene {
+    position: fixed;
+    z-index: -1;
+    inset: 0;
+    display: none;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  :global(body.wolf-wear-mode) #wolfWearScene {
+    display: block;
+  }
+
+  .wolf-moon-wrap {
+    position: absolute;
+    top: 9vh;
+    left: max(8vw, calc(50% - 470px));
+    width: clamp(88px, 12vw, 150px);
+    aspect-ratio: 1;
+  }
+
+  .wolf-moon {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    filter: drop-shadow(0 0 8px rgba(255, 250, 230, 0.88)) drop-shadow(0 0 22px rgba(255, 250, 230, 0.42));
+  }
+
+  .wolf-moon-cloud {
+    position: absolute;
+    top: 20%;
+    left: -22%;
+    width: 150%;
+    height: 58%;
+    opacity: var(--wolf-moon-cloud-opacity, 0.82);
+    filter: blur(7px);
+    transition: opacity 450ms ease-out;
+  }
+
+  .wolf-moon-cloud span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 43%;
+    border-radius: 50%;
+    background: linear-gradient(90deg, transparent, rgba(66, 81, 96, 0.38) 18%, rgba(79, 91, 103, 0.72) 45%, rgba(61, 77, 93, 0.5) 72%, transparent);
+  }
+
+  .wolf-moon-cloud span:first-child {
+    top: 15%;
+    transform: rotate(-12deg);
+  }
+
+  .wolf-moon-cloud span:last-child {
+    top: 48%;
+    left: 12%;
+    width: 80%;
+    opacity: 0.68;
+    transform: rotate(9deg);
+  }
+
+  .wolf-cloud {
+    position: absolute;
+    left: -12%;
+    width: 65%;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(99, 119, 137, 0.16);
+    filter: blur(13px);
+  }
+
+  .wolf-cloud-one { top: 22%; transform: rotate(-4deg); }
+  .wolf-cloud-two { top: 28%; left: 44%; width: 70%; opacity: 0.6; transform: rotate(3deg); }
+
+  .wolf-stars {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 18% 16%, #f4e9d8 50%, transparent 100%),
+      radial-gradient(1px 1px at 31% 8%, #dce5ef 50%, transparent 100%),
+      radial-gradient(1px 1px at 77% 18%, #dce5ef 50%, transparent 100%),
+      radial-gradient(1px 1px at 89% 31%, #f4e9d8 50%, transparent 100%),
+      radial-gradient(1px 1px at 67% 7%, #dce5ef 50%, transparent 100%),
+      radial-gradient(1px 1px at 43% 24%, #dce5ef 50%, transparent 100%),
+      radial-gradient(1px 1px at 95% 11%, #f4e9d8 50%, transparent 100%);
+    opacity: 0.75;
+  }
+
+  .wolf-stars i {
+    position: absolute;
+    top: 12%;
+    left: 61%;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #f8e9ca;
+    box-shadow: 0 0 8px #f8e9ca;
+  }
+
+  .wolf-stars i:nth-child(2) { top: 32%; left: 12%; }
+  .wolf-stars i:nth-child(3) { top: 9%; left: 82%; }
+  .wolf-stars i:nth-child(4) { top: 25%; left: 39%; }
+  .wolf-stars i:nth-child(5) { top: 14%; left: 72%; }
+  .wolf-stars i:nth-child(6) { top: 35%; left: 91%; }
+  .wolf-stars i:nth-child(7) { top: 7%; left: 26%; }
+  .wolf-stars i:nth-child(8) { top: 29%; left: 57%; }
+
+  .wolf-distant-town {
+    position: absolute;
+    right: 18%;
+    bottom: 0;
+    left: 18%;
+    display: flex;
+    height: 22vh;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 2px;
+    opacity: 0.55;
+  }
+
+  .wolf-distant-town span {
+    position: relative;
+    flex: 0 0 var(--town-width);
+    height: var(--town-building);
+    border: 1px solid rgba(93, 115, 135, 0.12);
+    border-bottom: 0;
+    background: linear-gradient(90deg, #0b1722, #101c28);
+    box-shadow: inset 1px 0 rgba(123, 145, 164, 0.08);
+  }
+
+  .wolf-distant-town span::after {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 2px at 28% 30%, #e0b374 55%, transparent 100%),
+      radial-gradient(1px 2px at 72% 54%, #d29a5c 55%, transparent 100%),
+      radial-gradient(1px 2px at 44% 80%, #e5bc82 55%, transparent 100%);
+    content: "";
+    opacity: 0;
+    filter: drop-shadow(0 0 3px rgba(231, 173, 103, 0.7));
+    transition: opacity 500ms ease;
+  }
+
+  .wolf-distant-town span.is-lit::after { opacity: 0.9; }
+
+  .wolf-city-side {
+    position: absolute;
+    bottom: 0;
+    width: min(27vw, 340px);
+    height: 68vh;
+  }
+
+  .wolf-city-left { left: 0; }
+  .wolf-city-right { right: 0; }
+
+  .wolf-building {
+    position: absolute;
+    bottom: 0;
+    width: 62%;
+    border: 1px solid rgba(117, 137, 153, 0.24);
+    border-bottom: 0;
+    background:
+      linear-gradient(90deg, rgba(58, 72, 83, 0.3), transparent 8% 82%, rgba(1, 7, 12, 0.56)),
+      repeating-linear-gradient(0deg, transparent 0 47px, rgba(101, 117, 130, 0.16) 47px 50px),
+      linear-gradient(90deg, #152330 0%, #0c1721 62%, #09121b 100%);
+    box-shadow: inset 8px 0 12px rgba(89, 107, 121, 0.06), inset -10px 0 18px rgba(1, 7, 12, 0.55), 0 0 24px rgba(1, 7, 12, 0.25);
+  }
+
+  .wolf-building::before {
+    position: absolute;
+    top: 0;
+    right: -1px;
+    left: -1px;
+    height: 7px;
+    border: 1px solid rgba(109, 128, 144, 0.22);
+    background: linear-gradient(180deg, #263643, #111e29);
+    content: "";
+  }
+
+  .wolf-building::after {
+    position: absolute;
+    top: 0;
+    right: 7px;
+    bottom: 0;
+    width: 3px;
+    background: rgba(99, 116, 130, 0.16);
+    content: "";
+  }
+
+  .wolf-building-back { z-index: 0; left: 23%; height: 44%; opacity: 0.76; }
+  .wolf-building-front { z-index: 1; left: 0; height: 70%; }
+  .wolf-city-right .wolf-building-back { right: 23%; left: auto; }
+  .wolf-city-right .wolf-building-front { right: 0; left: auto; }
+
+  .wolf-building-windows {
+    position: absolute;
+    inset: 17px 11px 9px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: minmax(4px, 1fr);
+    gap: clamp(5px, 0.85vh, 9px) clamp(4px, 0.55vw, 7px);
+    padding: 3px 6px;
+    border-right: 4px solid rgba(3, 9, 15, 0.8);
+    border-left: 4px solid rgba(3, 9, 15, 0.8);
+    background: linear-gradient(90deg, rgba(2, 8, 13, 0.28), transparent 15% 85%, rgba(2, 8, 13, 0.32)), repeating-linear-gradient(0deg, transparent 0 42px, rgba(5, 11, 17, 0.7) 42px 47px);
+  }
+
+  .wolf-building-windows i {
+    position: relative;
+    display: block;
+    border: 1px solid rgba(106, 122, 134, 0.18);
+    background: linear-gradient(145deg, #111c26, #080f17 75%);
+    box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.85), 0 1px 0 rgba(125, 141, 153, 0.08);
+    transition: background-color 450ms ease, box-shadow 450ms ease;
+  }
+
+  .wolf-building-windows i::before,
+  .wolf-building-windows i::after {
+    position: absolute;
+    background: rgba(2, 8, 14, 0.78);
+    content: "";
+    pointer-events: none;
+  }
+
+  .wolf-building-windows i::before { top: 0; bottom: 0; left: 49%; width: 1px; }
+  .wolf-building-windows i::after { right: 0; bottom: 23%; left: 0; height: 1px; }
+
+  .wolf-building-windows i.is-lit {
+    background: linear-gradient(155deg, #e0b97f 0%, #c7965d 58%, #9d7046 100%);
+    box-shadow: inset 1px 1px 3px rgba(255, 232, 183, 0.4), 0 0 10px rgba(227, 175, 115, 0.34);
+  }
+
+  .wolf-building-windows i:nth-child(7n + 2).is-lit {
+    background: linear-gradient(155deg, #bdc2b5, #858d86 78%);
+    box-shadow: 0 0 8px rgba(194, 205, 190, 0.25);
+  }
+
+  .wolf-building-windows i:nth-child(11n + 5).is-lit {
+    background: linear-gradient(155deg, #edd1a0, #c59c69 78%);
+  }
+
+  .wolf-rooftop-wolf {
+    position: absolute;
+    right: clamp(0px, 2vw, 24px);
+    bottom: calc(68vh * 0.7 - 3px);
+    width: clamp(115px, 16vw, 190px);
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
+  }
+
+  :global(body.wolf-wear-mode #productSection) {
+    margin-top: 0;
+    color: #f2f0e9;
+  }
+
+  :global(body.wolf-wear-mode #productTitle) {
+    color: #f2f0e9;
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    .wolf-moon-wrap { top: 5vh; left: 5vw; width: 76px; }
+    .wolf-cloud-one { top: 17%; }
+    .wolf-cloud-two { top: 22%; }
+    .wolf-city-side { width: 25vw; height: 48vh; }
+    .wolf-city-left { display: none; }
+    .wolf-building-windows { inset: 13px 3px 5px; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px 4px; padding: 3px 4px; }
+    .wolf-rooftop-wolf { right: 0; bottom: calc(48vh * 0.7 - 2px); width: clamp(42px, 15vw, 68px); }
+    .wolf-distant-town { right: 21%; left: 21%; height: 17vh; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wolf-building-windows i,
+    .wolf-distant-town span::after,
+    .wolf-moon-cloud { transition: none; }
+  }
+</style>
+
+<script>
+  const wolfButton = document.getElementById('brandBtn-wolf');
+  const brandButtons = [
+    document.getElementById('brandBtn-grizzly'),
+    document.getElementById('brandBtn-sleep'),
+  ].filter((button): button is HTMLElement => button instanceof HTMLElement);
+  const wolfTitle = document.getElementById('productTitle');
+  const wolfDescription = document.getElementById('brandDescription');
+  const brandLogo = document.getElementById('brandLogo');
+  const wolfLights = Array.from(document.querySelectorAll<HTMLElement>('#wolfWearScene .wolf-building-windows i, #wolfWearScene .wolf-distant-town span'));
+  const wolfLightingOrder = wolfLights.map((_, index) => index);
+  const wolfScrollDistance = () => Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+
+  for (let index = wolfLightingOrder.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [wolfLightingOrder[index], wolfLightingOrder[randomIndex]] = [wolfLightingOrder[randomIndex], wolfLightingOrder[index]];
+  }
+
+  const showWolfWear = () => {
+    document.body.classList.add('wolf-wear-mode');
+    [document.getElementById('brandBtn-grizzly'), document.getElementById('brandBtn-sleep'), wolfButton].forEach((button) => {
+      if (!(button instanceof HTMLElement)) return;
+      button.style.backgroundColor = '';
+      button.style.backgroundImage = '';
+      button.style.borderColor = '';
+    });
+    if (wolfTitle) wolfTitle.textContent = '商品一覧';
+    if (wolfDescription) {
+      wolfDescription.innerHTML = 'WOLF WEAR は、狼の持つ静かな威厳と都会的な洗練を融合させたレザークラフトシリーズです。<br>光沢のある革を中心に使用し、素材そのものの美しさを引き立てるシンプルなデザインに仕上げています。<br><br>外側にはロゴや装飾を施さず、細部の仕立てと革の質感によって上品さを表現しています。<br>無駄を削ぎ落とした佇まいの中に、紳士的な品格と機能美を追求しています。<br><br>ブラックとブラウンの2色を展開し、それぞれ異なる革を使用しています。<br>ブラックは厚みのある革による重厚感を、ブラウンは異なる革ならではの質感を活かし、色ごとに異なる表情を持たせています。';
+    }
+    if (brandLogo instanceof HTMLImageElement) {
+      brandLogo.src = '/images/WW_W_logo.png.png';
+      brandLogo.alt = 'WOLF WEAR';
+    }
+    const wolfButtonLogo = wolfButton?.querySelector('img');
+    if (wolfButtonLogo) wolfButtonLogo.src = '/images/WW_W_logo.png.png';
+    const sleepButtonLogo = document.querySelector<HTMLImageElement>('#brandBtn-sleep img');
+    if (sleepButtonLogo) sleepButtonLogo.src = '/images/SS_W_logo.png';
+    updateWolfLighting();
+  };
+
+  const leaveWolfWear = () => {
+    document.body.classList.remove('wolf-wear-mode');
+    if (wolfTitle) wolfTitle.textContent = '商品一覧';
+  };
+
+  brandButtons.forEach((button) => button.addEventListener('click', () => {
+    leaveWolfWear();
+    const wolfButtonLogo = wolfButton?.querySelector('img');
+    if (wolfButton instanceof HTMLElement) {
+      wolfButton.style.backgroundColor = button.id === 'brandBtn-grizzly' ? '#000000' : 'rgba(0, 0, 0, 0.22)';
+      wolfButton.style.backgroundImage = 'none';
+      wolfButton.style.borderColor = button.id === 'brandBtn-sleep' ? '#ffffff' : '';
+    }
+    if (wolfButtonLogo) {
+      wolfButtonLogo.src = '/images/WW_W_logo.png.png';
+    }
+    if (brandLogo instanceof HTMLImageElement) {
+      brandLogo.alt = button.id === 'brandBtn-grizzly' ? 'GrizzlyGear Logo' : 'SEEP SLEEP';
+    }
+  }));
+
+  let wolfFrame = 0;
+  function updateWolfLighting() {
+    cancelAnimationFrame(wolfFrame);
+    wolfFrame = requestAnimationFrame(() => {
+      const progress = Math.min(window.scrollY / wolfScrollDistance(), 1);
+      const litCount = Math.floor(progress * (wolfLights.length + 1));
+      const cloudOpacity = Math.max(0, 0.82 * (1 - progress / 0.3));
+      document.documentElement.style.setProperty('--wolf-moon-cloud-opacity', String(cloudOpacity));
+      wolfLights.forEach((light, index) => {
+        light.classList.toggle('is-lit', wolfLightingOrder[index] < litCount);
+      });
+    });
+  }
+
+  if (wolfButton) wolfButton.addEventListener('click', showWolfWear);
+  window.addEventListener('scroll', updateWolfLighting, { passive: true });
+</script>

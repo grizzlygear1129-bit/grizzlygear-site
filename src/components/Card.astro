@@ -12,11 +12,7 @@ interface Props {
   }[];
   slides: string[];
   capacity: {
-    bills?: string;
-    coins?: string;
-    cards?: string;
-    keys?: string;
-    others?: string;
+    [key: string]: string | undefined;
   };
   dimensions: {
     height?: string;
@@ -28,6 +24,14 @@ interface Props {
 }
 
 const { name, shortDescription, longDescription, mainImage, colors, slides, capacity, dimensions, newFlag } = Astro.props;
+const capacityLabels: Record<string, string> = {
+  bills: 'お札',
+  coins: '小銭',
+  cards: 'カード',
+  keys: '鍵',
+  lipstick: 'リップ',
+  others: 'その他',
+};
 ---
 
 <div 
@@ -183,11 +187,9 @@ const { name, shortDescription, longDescription, mainImage, colors, slides, capa
           <div>
             <h5 class="font-semibold mb-2">収納量目安</h5>
             <ul class="list-disc list-inside text-gray-600 space-y-1">
-              {capacity.bills && <li>お札：{capacity.bills}</li>}
-              {capacity.coins && <li>小銭：{capacity.coins}</li>}
-              {capacity.cards && <li>カード：{capacity.cards}</li>}
-              {capacity.keys && <li>鍵：{capacity.keys}</li>}
-              {capacity.lipstick && <li>リップ：{capacity.lipstick}</li>}
+              {Object.entries(capacity).map(([key, value]) => value && (
+                <li>{capacityLabels[key] || key}：{value}</li>
+              ))}
             </ul>
           </div>
         )}
@@ -219,9 +221,11 @@ const { name, shortDescription, longDescription, mainImage, colors, slides, capa
           <img src={color.image} alt={`${name} - ${color.name}`} class="w-full rounded-lg mb-2" />
           <h4 class="font-semibold">{color.name}</h4>
           <p class="text-sm text-gray-600 mb-2">{color.description}</p>
-          <a href={color.link} class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">
-            購入ページ
-          </a>
+          {color.link && color.link !== 'none' && color.link !== 'https://example.com/?purchase-url-not-set' && (
+            <a href={color.link} class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">
+              購入ページ
+            </a>
+          )}
         </div>
       ))}
     </div>

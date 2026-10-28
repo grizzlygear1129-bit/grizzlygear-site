@@ -483,5 +483,209 @@
         "link": "https://minne.com/items/45467675"
       }
     ]
+  },
+  {
+    "id": 13,
+    "brand": "wolf",
+    "name": "FORM（Wallet）",
+    "newFlag": 1,
+    "hideFlag": 0,
+    "shortDescription": "シンプルな長財布です",
+    "longDescription": "光沢のある革を使用した、シンプルで洗練されたデザインの長財布です。\n無駄な装飾を省き、すっきりとしたフォルムに仕上げました。\n革の艶がさりげない存在感を演出し、ビジネスシーンにも自然になじむアイテムです。",
+    "capacity": {
+      "bills": "10",
+      "coins": "20",
+      "cards": "6"
+    },
+    "dimensions": {
+      "height": "約9cm",
+      "width": "約17.5cm",
+      "depth": "約1cm"
+    },
+    "mainImage": "/images/FORM(Wallet)/main.jpg",
+    "slides": [
+      "/images/FORM(Wallet)/slide1.jpg",
+      "/images/FORM(Wallet)/slide2.jpg",
+      "/images/FORM(Wallet)/slide3.jpg",
+      "/images/FORM(Wallet)/slide4.jpg",
+      "/images/FORM(Wallet)/slide5.jpg",
+      "/images/FORM(Wallet)/slide6.jpg"
+    ],
+    "colors": [
+      {
+        "name": "ブラウン",
+        "image": "/images/FORM(Wallet)/color-ブラウン.jpg",
+        "description": "落ち着いたアクセントカラー",
+        "link": "none"
+      },
+      {
+        "name": "ブラック",
+        "image": "/images/FORM(Wallet)/color-レッド.jpg",
+        "description": "定番カラー",
+        "link": "none"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "brand": "wolf",
+    "name": "SLOT（Coin Case）",
+    "newFlag": 1,
+    "hideFlag": 0,
+    "shortDescription": "胸ポケットに入るぐらいコンパクトなコインケース",
+    "longDescription": "光沢のある革を使用した、シンプルなコインケースです。\n小銭をコンパクトに収納でき、持ち物をすっきりとまとめられます。\n装飾を抑えたデザインに、革の艶がほどよいアクセントを添えています。",
+    "capacity": {
+      "bills": "折りたためば1枚程度",
+      "coins": "20"
+    },
+    "dimensions": {
+      "height": "約7cm",
+      "width": "約8cm",
+      "depth": "約1.5cm"
+    },
+    "mainImage": "/images/SLOT(Coin-Case)/main.jpg",
+    "slides": [
+      "/images/SLOT(Coin-Case)/slide1.jpg",
+      "/images/SLOT(Coin-Case)/slide2.jpg",
+      "/images/SLOT(Coin-Case)/slide3.jpg",
+      "/images/SLOT(Coin-Case)/slide4.jpg",
+      "/images/SLOT(Coin-Case)/slide5.jpg",
+      "/images/SLOT(Coin-Case)/slide6.jpg"
+    ],
+    "colors": [
+      {
+        "name": "ブラウン",
+        "image": "/images/SLOT(Coin-Case)/color-ブラウン.jpg",
+        "description": "落ち着いたアクセントカラー",
+        "link": "https://example.com/?purchase-url-not-set"
+      },
+      {
+        "name": "ブラック",
+        "image": "/images/SLOT(Coin-Case)/color-ブラック.jpg",
+        "description": "定番カラー",
+        "link": "https://example.com/?purchase-url-not-set"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "brand": "wolf",
+    "name": "EDGE（Business Card Case）",
+    "newFlag": 1,
+    "hideFlag": 0,
+    "shortDescription": "シンプルな名刺入れです",
+    "longDescription": "光沢のある革を使用した、シンプルな名刺入れです。\n余計な装飾を省き、革の艶とすっきりとしたフォルムを活かして仕立てました。\n名刺交換の場面にも自然になじむ、ビジネスシーンにふさわしいアイテムです。",
+    "capacity": {
+      "名刺": "各ポケットに10枚程度"
+    },
+    "dimensions": {
+      "height": "約6.5cm",
+      "width": "約10.5cm",
+      "depth": "約2cm"
+    },
+    "mainImage": "/images/EDGE(Business-Card-Case)/main.jpg",
+    "slides": [
+      "/images/EDGE(Business-Card-Case)/slide1.jpg",
+      "/images/EDGE(Business-Card-Case)/slide2.jpg",
+      "/images/EDGE(Business-Card-Case)/slide3.jpg",
+      "/images/EDGE(Business-Card-Case)/slide4.jpg",
+      "/images/EDGE(Business-Card-Case)/slide5.jpg"
+    ],
+    "colors": [
+      {
+        "name": "ブラウン",
+        "image": "/images/EDGE(Business-Card-Case)/color-ブラウン.jpg",
+        "description": "落ち着いたアクセントカラー",
+        "link": "https://example.com/?purchase-url-not-set"
+      },
+      {
+        "name": "ブラック",
+        "image": "/images/EDGE(Business-Card-Case)/color-ブラック.jpg",
+        "description": "定番カラー",
+        "link": "https://example.com/?purchase-url-not-set"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "brand": "wolf",
+    "name": "CORE（Mini Wallet）",
+    "newFlag": 1,
+    "hideFlag": 0,
+    "shortDescription": "ポケットに入るミニウォレット",
+    "longDescription": "光沢のある革を使用した、コンパクトなミニウォレットです。\n必要なものをすっきりと持ち歩けるよう、シンプルなデザインに仕上げました。\n革の艶と無駄のないフォルムが特徴で、日常使いからビジネスシーンまで幅広く活躍します。",
+    "capacity": {
+      "bills": "2",
+      "coins": "10",
+      "cards": "3"
+    },
+    "dimensions": {
+      "height": "約7.5cm",
+      "width": "約10cm",
+      "depth": "約1.5cm"
+    },
+    "mainImage": "/images/aa/main.jpg",
+    "slides": [
+      "/images/aa/slide1.jpg",
+      "/images/aa/slide2.jpg",
+      "/images/aa/slide3.jpg",
+      "/images/aa/slide4.jpg",
+      "/images/aa/slide5.jpg",
+      "/images/aa/slide6.jpg",
+      "/images/aa/slide7.jpg"
+    ],
+    "colors": [
+      {
+        "name": "ブラウン",
+        "image": "/images/aa/color-ブラウン.jpg",
+        "description": "落ち着いたアクセントカラー",
+        "link": "https://example.com/?purchase-url-not-set"
+      },
+      {
+        "name": "ブラック",
+        "image": "/images/aa/color-ブラック.jpg",
+        "description": "定番カラー",
+        "link": "https://example.com/?purchase-url-not-set"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "brand": "wolf",
+    "name": "BOLT（Key Case）",
+    "newFlag": 1,
+    "hideFlag": 0,
+    "shortDescription": "シンプルなキーケースです",
+    "longDescription": "光沢のある革を使用した、シンプルなキーケースです。\n鍵をすっきりとまとめて持ち歩けるよう、無駄のないデザインに仕上げました。\n革の艶を活かした落ち着いた佇まいで、日常使いにもビジネスシーンにも自然になじみます。",
+    "capacity": {
+      "keys": "4"
+    },
+    "dimensions": {
+      "height": "約6cm",
+      "width": "約11.5cm",
+      "depth": "約2.2cm"
+    },
+    "mainImage": "/images/BOLT(Key-Case)/main.jpg",
+    "slides": [
+      "/images/BOLT(Key-Case)/slide1.jpg",
+      "/images/BOLT(Key-Case)/slide2.jpg",
+      "/images/BOLT(Key-Case)/slide3.jpg",
+      "/images/BOLT(Key-Case)/slide4.jpg",
+      "/images/BOLT(Key-Case)/slide5.jpg"
+    ],
+    "colors": [
+      {
+        "name": "ブラウン",
+        "image": "/images/BOLT(Key-Case)/color-ブラウン.jpg",
+        "description": "落ち着いたアクセントカラー",
+        "link": "https://example.com/?purchase-url-not-set"
+      },
+      {
+        "name": "ブラック",
+        "image": "/images/BOLT(Key-Case)/color-ブラック.jpg",
+        "description": "定番カラー",
+        "link": "https://example.com/?purchase-url-not-set"
+      }
+    ]
   }
 ]
