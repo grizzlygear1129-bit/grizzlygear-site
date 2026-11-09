@@ -34,5 +34,14 @@
     "content": "5月10日よりGRIZZLY GEARの販売を開始します！！\n\nminneにて商品の販売を行います。\n",
     "image": "/images/GG_logo.png",
     "date": "2026年05月07日"
-  }
+  },
+  {
+      "id": 5,
+      "hideFlag": 0,
+      "title": "新シリーズ「WOLF WEAR」の商品を公開しました。",
+      "description": "新シリーズ「WOLF WEAR」の商品を公開しました。",
+      "content": "新シリーズ「WOLF WEAR」の商品を公開しました！\n\nminneにて商品の販売を行います。",
+      "image": "/images/WW_logo.png",
+      "date": "2026年11月09日"
+    }
 ]
