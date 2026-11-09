@@ -516,13 +516,13 @@
         "name": "ブラウン",
         "image": "/images/FORM(Wallet)/color-ブラウン.jpg",
         "description": "落ち着いたアクセントカラー",
-        "link": "none"
+        "link": "https://minne.com/items/46635103"
       },
       {
         "name": "ブラック",
         "image": "/images/FORM(Wallet)/color-レッド.jpg",
         "description": "定番カラー",
-        "link": "none"
+        "link": "https://minne.com/items/46635103"
       }
     ]
   },
@@ -557,13 +557,13 @@
         "name": "ブラウン",
         "image": "/images/SLOT(Coin-Case)/color-ブラウン.jpg",
         "description": "落ち着いたアクセントカラー",
-        "link": "https://example.com/?purchase-url-not-set"
+        "link": "https://minne.com/items/46635144"
       },
       {
         "name": "ブラック",
         "image": "/images/SLOT(Coin-Case)/color-ブラック.jpg",
         "description": "定番カラー",
-        "link": "https://example.com/?purchase-url-not-set"
+        "link": "https://minne.com/items/46635144"
       }
     ]
   },
@@ -596,13 +596,13 @@
         "name": "ブラウン",
         "image": "/images/EDGE(Business-Card-Case)/color-ブラウン.jpg",
         "description": "落ち着いたアクセントカラー",
-        "link": "https://example.com/?purchase-url-not-set"
+        "link": "https://minne.com/items/46706176"
       },
       {
         "name": "ブラック",
         "image": "/images/EDGE(Business-Card-Case)/color-ブラック.jpg",
         "description": "定番カラー",
-        "link": "https://example.com/?purchase-url-not-set"
+        "link": "https://minne.com/items/46706176"
       }
     ]
   },
@@ -639,13 +639,13 @@
         "name": "ブラウン",
         "image": "/images/aa/color-ブラウン.jpg",
         "description": "落ち着いたアクセントカラー",
-        "link": "https://example.com/?purchase-url-not-set"
+        "link": "https://minne.com/items/46706231"
       },
       {
         "name": "ブラック",
         "image": "/images/aa/color-ブラック.jpg",
         "description": "定番カラー",
-        "link": "https://example.com/?purchase-url-not-set"
+        "link": "https://minne.com/items/46706231"
       }
     ]
   },
@@ -678,13 +678,13 @@
         "name": "ブラウン",
         "image": "/images/BOLT(Key-Case)/color-ブラウン.jpg",
         "description": "落ち着いたアクセントカラー",
-        "link": "https://example.com/?purchase-url-not-set"
+        "link": "https://minne.com/items/46706212"
       },
       {
         "name": "ブラック",
         "image": "/images/BOLT(Key-Case)/color-ブラック.jpg",
         "description": "定番カラー",
-        "link": "https://example.com/?purchase-url-not-set"
+        "link": "https://minne.com/items/46706212"
       }
     ]
   }

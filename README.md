@@ -41,6 +41,23 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## ローカルでの起動方法
+
+Node.js と npm をインストールしたうえで、ターミナルからプロジェクトのルートフォルダに移動し、依存パッケージをインストールします。
+
+```powershell
+cd C:\GrizzlyGear\dimensional-doppler
+npm ci
+```
+
+開発サーバーを起動します。
+
+```powershell
+npm run dev
+```
+
+ブラウザーで <http://localhost:4321/> を開くと、ローカルのサイトを確認できます。開発サーバーを終了するには、ターミナルで `Ctrl+C` を押してください。
+
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
